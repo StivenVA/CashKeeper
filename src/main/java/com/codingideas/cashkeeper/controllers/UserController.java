@@ -1,53 +1,70 @@
 package com.codingideas.cashkeeper.controllers;
 
+import com.codingideas.cashkeeper.dto.ClientDTO;
+import com.codingideas.cashkeeper.mapper.MapperUser;
 import com.codingideas.cashkeeper.models.User;
-import de.mkammerer.argon2.Argon2;
-import de.mkammerer.argon2.Argon2Factory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.jetbrains.annotations.NotNull;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequestMapping(value = "/user")
 @RestController
 @RequiredArgsConstructor
+@Transactional
 public class UserController {
 
     @PersistenceContext
     private final EntityManager entityManager;
 
-    @RequestMapping(value = "/signup",method = RequestMethod.POST)
-    public String signUpUser(@RequestBody @NotNull User user){
 
-        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+    @RequestMapping(value = "get/clients")
+    public List<ClientDTO> getClients(){
+            List<User> users  = entityManager.createQuery("FROM User where rol!=1").getResultList();
 
-        String hashedPassword = argon2.hash(3,2,1024,user.getPassword());
-        user.setPassword(hashedPassword);
+        MapperUser mapperUser = new MapperUser();
 
-        User id = entityManager.find(User.class,user.getId());
+        return users.stream().map(mapperUser::userToClientDto).collect(Collectors.toList());
+    }
 
-        List email = entityManager.createQuery("FROM User where email='"+user.getEmail()+"'").getResultList();
+    @RequestMapping(value = "delete/client",method = RequestMethod.DELETE)
+    public String deleteClient(@RequestBody String id, @RequestHeader(value = "Authorization") boolean auth){
+        User user = entityManager.find(User.class,id);
 
-        if (id != null) return "Ya existe una cuenta asociada a este numero de identidad";
-        if (!email.isEmpty()) return "Ya existe una cuenta asociada a este correo";
+        if(!auth) return "El tiempo de estadia ha expirado, por favor inicie sesion nuevamente";
+
+        entityManager.remove(user);
+
+        return "cliente eliminado con exito";
+    }
+
+    @RequestMapping(value = "add/client",method = RequestMethod.POST)
+    public String addClient(@RequestBody User user,@RequestHeader boolean auth){
+
+        if (!auth) return "El tiempo de estadia ha expirado, por favor inicie sesion nuevamente";
+
+        if (entityManager.find(User.class,user.getId())!=null) return "Ya se encuentra un cliente registrado con ese numero de identidad";
 
         entityManager.merge(user);
 
-        return "Registro exitoso";
+        return  "El usuario ha sido añadido exitosamente";
     }
 
-    @RequestMapping(value = "/get/users",method = RequestMethod.GET)
-    public List getUsers(){
+    @RequestMapping(value = "edit/client")
+    public String editClient(@RequestBody User userEdited){
 
-        return entityManager.createQuery("FROM User").getResultList();
-    };
+        User user = entityManager.find(User.class,userEdited.getId());
 
+        user.setNombre(userEdited.getNombre());
+        user.setDireccion(userEdited.getDireccion());
+        user.setTelefono(userEdited.getTelefono());
 
+        entityManager.merge(user);
 
+        return "Usuario editado con exito";
+    }
 }
