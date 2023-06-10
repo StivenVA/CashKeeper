@@ -1,0 +1,83 @@
+body{
+   background-color: #ff0000;
+   font-family: 'Merienda', cursive;
+   }
+a{
+   text-decoration:none !important;
+   color: #7a0a0a;
+}
+h1{
+   font-size: 1.5rem;
+}
+.myform{
+   position: fixed;
+   display: -ms-flexbox;
+   display: flex;
+   padding: 1rem;
+   -ms-flex-direction: column;
+   flex-direction: column;
+   width: 40%;
+   height: 60%;
+   pointer-events: auto;
+   background-color: #fff;
+   background-clip: padding-box;
+   border: 5px solid rgba(0,0,0,.2);
+   border-radius: 1.1rem;
+   outline: 0;
+   max-width: 500px;
+   background-color: #82B6E5;
+   bottom: 10%;
+   align-items: center;
+}
+.tx-tfm{
+   text-transform:uppercase;
+}
+.mybtn{
+   border-radius:70px;
+   background-color: #4A8CC9;
+   border: none;
+   color: black;
+}
+.login-or {
+   position: relative;
+   color: #aaa;
+   margin-top: 10px;
+   margin-bottom: 10px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+}
+.span-or {
+   display: block;
+   position: absolute;
+   left: 50%;
+   top: -2px;
+   margin-left: -25px;
+   background-color: #fff;
+   width: 50px;
+   text-align: center;
+}
+.hr-or {
+   height: 1px;
+   margin-top: 0px !important;
+   margin-bottom: 0px !important;
+}
+form .error {
+   color: #ff0000;
+}
+.icono{
+   width: 15%;
+   height: 15%;
+}
+.logo{
+   width: 50%;
+   top: 30px;
+}
+.curved svg{
+   display: block;
+}
+.icono1{
+   position: absolute;
+   left: 65%;
+   width: 35%;
+   height: 35%;
+}
