@@ -18,5 +18,6 @@ public class SalesDTO {
     private List<ProductDTO> products;
     private LocalDate fecha;
     private LocalTime hora;
-    private String nombre;
+    private String nombreCliente;
+
 }

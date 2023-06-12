@@ -14,4 +14,5 @@ public interface IUserService {
 
     boolean removeClient(String id,boolean auth);
 
+    String addUser(User user);
 }

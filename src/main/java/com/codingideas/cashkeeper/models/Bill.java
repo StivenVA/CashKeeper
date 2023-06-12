@@ -14,6 +14,7 @@ public class Bill {
 
     @Id
     @Column(name = "id_factura")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_factura;
 
     @Column(name = "total")

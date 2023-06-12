@@ -22,7 +22,7 @@ public class ProductService implements IProductService {
     @Override
     public List getProduct(boolean auth) {
 
-        //if (!auth) return null;
+        if (!auth) return null;
         return entityManager.createQuery("FROM Product ").getResultList();
     }
 

@@ -2,10 +2,13 @@ package com.codingideas.cashkeeper.service;
 
 import com.codingideas.cashkeeper.interfaces.IUserService;
 import com.codingideas.cashkeeper.models.User;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Repository;
 
 
@@ -65,5 +68,23 @@ public class UserService implements IUserService {
         entityManager.remove(user);
 
         return true;
+    }
+
+    @Override
+    public String addUser(@NotNull User user) {
+
+        User userId = entityManager.find(User.class,user.getId());
+        List userEmail =entityManager.createQuery("FROM User where email='"+user.getEmail()+"'")
+                .getResultList();
+
+        if (!userEmail.isEmpty()) return "Ya existe una cuenta asociada a este correo";
+        if (userId!=null) return "Ya existe una cuenta asociada a este numero de identidad";
+
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        String hashedPassword = argon2.hash(3,1024,2,user.getPassword());
+        user.setPassword(hashedPassword);
+
+        entityManager.merge(user);
+        return "OK";
     }
 }

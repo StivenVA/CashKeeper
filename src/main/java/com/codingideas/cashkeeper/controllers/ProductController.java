@@ -21,8 +21,8 @@ public class ProductController {
     private final IProductService iProductService;
 
     @RequestMapping(value = "/get")
-    public List getProducts(/*@RequestHeader(value = "Authorization") boolean auth*/){
-    return iProductService.getProduct(/*auth*/true);
+    public List getProducts(@RequestHeader(value = "Authorization") boolean auth){
+    return iProductService.getProduct(auth);
     }
 
     @RequestMapping(value="/edit",method = RequestMethod.POST)

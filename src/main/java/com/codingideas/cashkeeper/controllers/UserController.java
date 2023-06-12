@@ -39,4 +39,9 @@ public class UserController {
     public boolean editClient(@RequestBody User userEdited,@RequestHeader(value="Authorization") boolean auth){
         return iUserService.ediClient(userEdited,auth);
     }
+
+    @RequestMapping(value = "/signup",method = RequestMethod.POST)
+    public String addUser(@RequestBody User user){
+        return iUserService.addUser(user);
+    }
 }
