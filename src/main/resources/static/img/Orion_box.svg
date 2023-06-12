@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
+aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Box</title>
+  <desc>A solid styled icon from Orion Icon Library.</desc>
+  <path data-name="layer2"
+  fill="#000000" d="M60.7 18L50 2H14L3.3 18h57.4z"></path>
+  <path data-name="layer1" d="M2 22v40h60V22zm40 16H22a4 4 0 0 1 0-8h20a4 4 0 0 1 0 8z"
+  fill="#000000"></path>
+</svg>
