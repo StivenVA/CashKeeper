@@ -1,0 +1,53 @@
+:root{
+    --colorTextos: #49454567;
+}
+
+#form{
+    height: 400px;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    justify-content: center;
+    position: fixed;
+    top: 30%;
+    left: 34%;
+
+
+    padding: 40px 0;
+    box-shadow: 0 0 6px 0 rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+}
+.form{
+    width: 100%;
+    margin: auto;
+}
+h1{
+    text-align: center;
+    font-weight: 500;
+    position: fixed;
+    top: 20%;
+    left: 35%;
+}
+
+form .grupo{
+    position: relative;
+    margin: 45px;
+}
+
+input{
+    background:#eb6363 ;
+    color: #c6c6c6;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--colorTextos);
+    border-radius: 20px;
+}
+input:focus{
+    outline: none;
+    color: rgb(131, 128, 128);
+}
