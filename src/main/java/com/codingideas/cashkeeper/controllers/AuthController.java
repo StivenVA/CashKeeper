@@ -8,10 +8,7 @@ import de.mkammerer.argon2.Argon2Factory;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -43,6 +40,7 @@ public class AuthController {
         return entityManager.find(User.class,email.get(0).getId());
     }
 
+
     @RequestMapping(value = "/log",method = RequestMethod.POST)
     public ResponseEntity<AuthRequest> iniciarSesion(@RequestBody User user) {
 
@@ -53,7 +51,8 @@ public class AuthController {
         return ResponseEntity.ok().body(new AuthRequest(token,findUser(user),null));
     }
 
-    public boolean checkToken(String token){
+    @RequestMapping(value="/token")
+    public boolean checkToken(@RequestHeader(value = "Authorization") String token){
         String usuarioId = jwtUtil.getKey(token);
         return usuarioId!=null;
     }
