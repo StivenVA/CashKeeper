@@ -3,8 +3,7 @@ package com.codingideas.cashkeeper.service;
 
 import com.codingideas.cashkeeper.interfaces.IProductService;
 import com.codingideas.cashkeeper.models.Product;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import com.codingideas.cashkeeper.repository.ProductRespository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -16,39 +15,50 @@ import java.util.List;
 @Repository
 public class ProductService implements IProductService {
 
-    @PersistenceContext
-    private final EntityManager entityManager;
+    private final ProductRespository productRespository;
 
     @Override
     public List getProduct(boolean auth) {
 
         if (!auth) return null;
-        return entityManager.createQuery("FROM Product ").getResultList();
+        return productRespository.getProducts();
     }
 
     @Override
     public String modifyProduct(Product productEdited, boolean auth) {
 
-        if (!auth) return null;
+        if (!auth) return "Por favor inicie sesion nuevamente";
 
-        Product product = entityManager.find(Product.class,productEdited.getId());
+        Product product = productRespository.findProduct(productEdited.getId());
 
         product.setDescripcion(productEdited.getDescripcion());
         product.setPrecio(productEdited.getPrecio());
 
-        entityManager.merge(product);
+        productRespository.mergeProduct(product);
 
         return "OK";
     }
 
     @Override
-    public boolean addProduct(Product product, boolean auth) {
+    public String addProduct(Product product, boolean auth) {
+
+        if (!auth) return "Por favor inicie sesion nuevamente";
+
+        if(productRespository.findProduct(product.getId())!=null) return "Ya existe un producto con esa identificacion";
+
+        productRespository.mergeProduct(product);
+
+        return "OK";
+    }
+
+    @Override
+    public boolean deleteProduct(String id, boolean auth) {
 
         if (!auth) return false;
 
-        if(entityManager.find(Product.class,product.getId())!=null) return false;
+        Product product = productRespository.findProduct(id);
 
-        entityManager.merge(product);
+        productRespository.removeProduct(product);
 
         return true;
     }

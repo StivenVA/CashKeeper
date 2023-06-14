@@ -11,7 +11,6 @@ import com.codingideas.cashkeeper.utils.mapper.MapperProductDTO;
 import com.codingideas.cashkeeper.utils.mapper.MapperSale;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;

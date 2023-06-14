@@ -17,3 +17,8 @@ listElements.forEach(listElement => {
         menu.style.height = height+"px";
     })    
 });
+
+document.getElementById("cerrar_sesion").addEventListener("click",()=>{
+    document.cookie = `user=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
+    document.cookie = `token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
+});

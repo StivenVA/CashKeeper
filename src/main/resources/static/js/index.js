@@ -37,7 +37,7 @@
             method:"POST",
             headers:{
                 "Accept":"application/json",
-                "Content-type":"application/json"
+                "Content-type":"application/json",
             },
             body:JSON.stringify(datos)
         })
@@ -55,7 +55,7 @@
 
         document.cookie = `user=${encodeURIComponent(JSON.stringify(cookie))};path=/`;
 
-        window.location = '404.html';
+        window.location = 'inicio.html';
     }
 
 
