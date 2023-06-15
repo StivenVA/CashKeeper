@@ -37,7 +37,7 @@
             method:"POST",
             headers:{
                 "Accept":"application/json",
-                "Content-type":"application/json"
+                "Content-type":"application/json",
             },
             body:JSON.stringify(datos)
         })
@@ -50,7 +50,8 @@
         cookie.nombre = response.user.nombre;
         cookie.id = response.user.id;
         cookie.rol = response.user.rol;
-        cookie.token = response.token;
+
+        document.cookie = `token=${encodeURIComponent(response.token)};path=/`;
 
         document.cookie = `user=${encodeURIComponent(JSON.stringify(cookie))};path=/`;
 
