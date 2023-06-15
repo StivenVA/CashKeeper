@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public class UserController {
 
     private final IUserService iUserService;
-
+ 
     @RequestMapping(value = "get/clients")
     public List<ClientDTO> getClients(){
         return iUserService.getClients();

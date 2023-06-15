@@ -55,7 +55,7 @@
 
         document.cookie = `user=${encodeURIComponent(JSON.stringify(cookie))};path=/`;
 
-        window.location = '404.html';
+        //window.location = 'inicio.html';
     }
 
 
