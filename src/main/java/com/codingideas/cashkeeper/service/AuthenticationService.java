@@ -4,6 +4,7 @@ package com.codingideas.cashkeeper.service;
 import com.codingideas.cashkeeper.interfaces.IAuthentication;
 import com.codingideas.cashkeeper.models.AuthRequest;
 import com.codingideas.cashkeeper.models.User;
+import com.codingideas.cashkeeper.repository.AuthenticationRepository;
 import com.codingideas.cashkeeper.utils.JWTUtil;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
@@ -21,8 +22,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AuthenticationService implements IAuthentication {
 
-    @PersistenceContext
-    private final EntityManager entityManager;
+    private final AuthenticationRepository authenticationRepository;
 
     private  final JWTUtil jwtUtil;
 
@@ -35,27 +35,20 @@ public class AuthenticationService implements IAuthentication {
 
         String token = jwtUtil.create(String.valueOf(user.getEmail()),user.getPassword());
 
-        return ResponseEntity.ok().body(new AuthRequest(token,findUser(user),null));
+        return ResponseEntity.ok().body(new AuthRequest(token,authenticationRepository.findUserforEmail(user.getEmail()),null));
     }
 
     public String authentication(User user){
-        List<User> email = entityManager
-                .createQuery("FROM User where email='"+user.getEmail()+"'").getResultList();
+        User email = authenticationRepository.findUserforEmail(user.getEmail());
 
-        if (email.isEmpty()) return "El correo ingresado no se encuentra asociado a ninguna cuenta";
+        if (email==null) return "El correo ingresado no se encuentra asociado a ninguna cuenta";
 
         Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
-        String hashedPassword = email.get(0).getPassword();
+        String hashedPassword = email.getPassword();
 
         return !argon2.verify(hashedPassword,user.getPassword())
                 ?"Ha ingresado una contraseña incorrecta pruebe nuevamente"
                 :"OK";
-    }
-
-    public User findUser(User user){
-        List<User> email = entityManager
-                .createQuery("FROM User where email='"+user.getEmail()+"'").getResultList();
-        return entityManager.find(User.class,email.get(0).getId());
     }
 
 }

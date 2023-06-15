@@ -10,5 +10,7 @@ public interface IProductService {
 
     String modifyProduct(Product productEdited,boolean auth);
 
-    boolean addProduct(Product product,boolean auth);
+    String addProduct(Product product,boolean auth);
+
+    boolean deleteProduct(String id,boolean auth);
 }
