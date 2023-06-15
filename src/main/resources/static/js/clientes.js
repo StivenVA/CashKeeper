@@ -15,7 +15,8 @@ const traerClientes = async()=>{
         <td>${cliente.nombre}</td>
         <td>${cliente.direccion}</td>
         <td>${cliente.telefono}</td>
-        <td>Acciones</td>
+        <td><a href=""><img src="img/icons8-editar.svg" class="acciones"></a>
+        <a href=""><img src="img/icons8-basura-llena.svg" class="acciones"></a></td>
     </tr>`;
     });
     
