@@ -2,12 +2,9 @@ package com.codingideas.cashkeeper.controllers;
 
 
 import com.codingideas.cashkeeper.interfaces.ISalesService;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.transaction.Transactional;
+import com.codingideas.cashkeeper.models.Sale;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,4 +20,13 @@ public class SalesController {
         return iSalesService.getSales();
     }
 
+    @RequestMapping(value="edit",method = RequestMethod.POST)
+    public boolean editSale(@RequestBody Sale sale, @RequestHeader(value = "Authorization") boolean auth){
+        return iSalesService.modifySale(sale,auth);
+    }
+
+    @RequestMapping(value = "/add")
+    public String registerSale(@RequestBody Sale sale,@RequestHeader(value = "Authorization") boolean auth){
+        return  iSalesService.registerSale(sale,auth);
+    }
 }

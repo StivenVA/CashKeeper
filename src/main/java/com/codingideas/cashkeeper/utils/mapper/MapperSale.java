@@ -18,7 +18,7 @@ public class MapperSale {
         salesDTO.setFecha(factura.getFecha());
         salesDTO.setId_factura(factura.getId_factura());
         salesDTO.setTotal(factura.getTotal());
-        salesDTO.setNombre(factura.getId_usuario().getNombre());
+        salesDTO.setNombreCliente(factura.getId_usuario().getNombre());
 
         return salesDTO;
     }

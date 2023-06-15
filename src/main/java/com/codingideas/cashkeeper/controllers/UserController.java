@@ -2,16 +2,11 @@ package com.codingideas.cashkeeper.controllers;
 
 import com.codingideas.cashkeeper.dto.ClientDTO;
 import com.codingideas.cashkeeper.interfaces.IUserService;
-import com.codingideas.cashkeeper.mapper.MapperUser;
 import com.codingideas.cashkeeper.models.User;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RequestMapping(value = "/user")
 @RestController
@@ -38,5 +33,10 @@ public class UserController {
     @RequestMapping(value = "edit/client",method = RequestMethod.POST)
     public boolean editClient(@RequestBody User userEdited,@RequestHeader(value="Authorization") String token){
         return iUserService.ediClient(userEdited,token);
+    }
+
+    @RequestMapping(value = "/signup",method = RequestMethod.POST)
+    public String addUser(@RequestBody User user){
+        return iUserService.addUser(user);
     }
 }
