@@ -22,9 +22,8 @@ const agregarCliente = async()=>{
         },
         body: JSON.stringify(cliente)
     });
-    console.log(JSON.stringify(cookie.token))
     let response = await request.json();
-    console.log(response);
+    alert(response);
 
 
 }
@@ -37,5 +36,4 @@ document.getElementById("agregar").addEventListener("click",(e)=>{
 
 document.getElementById("cerrarSesion").addEventListener("click",()=>{
     document.cookie = `user=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
-    document.cookie = `token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
 });
