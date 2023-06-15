@@ -50,8 +50,7 @@
         cookie.nombre = response.user.nombre;
         cookie.id = response.user.id;
         cookie.rol = response.user.rol;
-
-        document.cookie = `token=${encodeURIComponent(response.token)};path=/`;
+        cookie.token = response.token;
 
         document.cookie = `user=${encodeURIComponent(JSON.stringify(cookie))};path=/`;
 
