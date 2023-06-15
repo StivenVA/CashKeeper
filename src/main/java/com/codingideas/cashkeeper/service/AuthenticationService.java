@@ -24,13 +24,7 @@ public class AuthenticationService implements IAuthentication {
 
     private final AuthenticationRepository authenticationRepository;
 
-    private final JWTUtil jwtUtil;
-
-    @Override
-    public boolean verifyToken(String token) {
-        String usuarioId = jwtUtil.getKey(token);
-        return usuarioId!=null;
-    }
+    private  final JWTUtil jwtUtil;
 
     @Override
     public ResponseEntity<AuthRequest> login(User user) {

@@ -20,8 +20,4 @@ public class AuthController {
         return  iAuthentication.login(user);
     }
 
-    @RequestMapping(value="/token")
-    public boolean checkToken(@RequestHeader(value = "Authorization") String token){
-       return iAuthentication.verifyToken(token);
-    }
 }

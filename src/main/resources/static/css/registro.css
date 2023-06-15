@@ -1,10 +1,6 @@
-:root{
-    --colorTextos: #49454567;
-}
-
 #form{
     height: 400px;
-    width: 400px;
+    width: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,12 +8,9 @@
     justify-content: center;
     position: fixed;
     top: 30%;
-    left: 34%;
-
-
+    left: 28%;
     padding: 40px 0;
-    box-shadow: 0 0 6px 0 rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
+
 }
 .form{
     width: 100%;
@@ -37,17 +30,57 @@ form .grupo{
 }
 
 input{
-    background:#eb6363 ;
+    background:#e77d7d ;
     color: #c6c6c6;
     font-size: 18px;
     padding: 10px 10px 10px 5px;
     display: block;
     width: 100%;
     border: none;
-    border-bottom: 1px solid var(--colorTextos);
     border-radius: 20px;
+    height: 32px;
 }
 input:focus{
     outline: none;
-    color: rgb(131, 128, 128);
+    color: rgb(44, 42, 42);
+    font-family: 'Merienda', cursive;
+    font-size: 15px;
+}
+.label{
+    font-size: 16px;
+    position: absolute;
+    color: rgb(44, 42, 42);
+    left: 5px;
+    top: 1px;
+    transition: 0.5s ease all;
+    pointer-events: none;
+}
+input:focus~.label,
+input:valid~.label{
+    top: -26px;
+    font-size: 14px;
+    color: #0f6ae0;
+}
+button{
+    font-family: 'Merienda', cursive;
+    background: #CA1C1C;
+    border: none;
+    display: block;
+    width: 40%;
+    margin: 10px auto;
+    color: #FFFFFF;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+/*iconos*/
+img{
+    width: 25px;
+    height: 25px;
+}
+.añadir{
+    width: 45px;
+    height: 45px;
 }
