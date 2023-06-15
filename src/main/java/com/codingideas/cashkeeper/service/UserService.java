@@ -2,6 +2,7 @@ package com.codingideas.cashkeeper.service;
 
 import com.codingideas.cashkeeper.interfaces.IUserService;
 import com.codingideas.cashkeeper.models.User;
+import com.codingideas.cashkeeper.utils.JWTUtil;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
@@ -20,10 +21,18 @@ public class UserService implements IUserService {
     @PersistenceContext
     private final EntityManager entityManager;
 
-    @Override
-    public boolean ediClient(User userEdited, boolean auth) {
+    private final JWTUtil jwtUtil;
 
-        if(!auth) return false;
+    public boolean verifyToken(String token) {
+        String usuarioId = jwtUtil.getKey(token);
+        System.out.println(usuarioId);
+        return usuarioId!=null;
+    }
+
+    @Override
+    public boolean ediClient(User userEdited, String token) {
+
+        if(!verifyToken(token)) return false;
 
         User user = entityManager.find(User.class,userEdited.getId());
 
@@ -46,8 +55,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public String addClient(User user, boolean auth) {
-        if (!auth) return "El tiempo de estadia ha expirado, por favor inicie sesion nuevamente";
+    public String addClient(User user, String token) {
+        if (!verifyToken(token)) return "El tiempo de estadia ha expirado, por favor inicie sesion nuevamente";
 
         if (entityManager.find(User.class,user.getId())!=null) return "Ya se encuentra un cliente registrado con ese numero de identidad";
 
@@ -57,10 +66,10 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public boolean removeClient(String id, boolean auth) {
+    public boolean removeClient(String id, String token) {
         User user = entityManager.find(User.class,id);
 
-        if(!auth) return false;
+        if(!verifyToken(token)) return false;
 
         entityManager.remove(user);
 

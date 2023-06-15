@@ -11,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -22,12 +21,7 @@ public class AuthController {
 
     @RequestMapping(value = "/log",method = RequestMethod.POST)
     public ResponseEntity<AuthRequest> login(@RequestBody User user) {
-
         return  iAuthentication.login(user);
     }
 
-    @RequestMapping(value="/token")
-    public boolean checkToken(@RequestHeader(value = "Authorization") String token){
-       return iAuthentication.verifyToken(token);
-    }
 }

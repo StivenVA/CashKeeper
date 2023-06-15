@@ -6,8 +6,6 @@ import org.springframework.http.ResponseEntity;
 
 public interface IAuthentication {
 
-    boolean verifyToken(String token);
-
     ResponseEntity<AuthRequest> login(User user);
 
 }

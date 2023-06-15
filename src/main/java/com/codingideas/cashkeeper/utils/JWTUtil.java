@@ -90,6 +90,7 @@ public class JWTUtil extends Exception{
         try {
             Claims claims = Jwts.parser().setSigningKey(DatatypeConverter.parseBase64Binary(key))
                     .parseClaimsJws(jwt).getBody();
+            System.out.println(claims);
             return claims.getId();
         } catch (Throwable e) {
             return null;

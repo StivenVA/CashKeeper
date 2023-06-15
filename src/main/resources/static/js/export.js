@@ -6,9 +6,9 @@ export let getCookie = (name)=>{
       const cookieName = decodeURIComponent(cookie[0]);
       if(cookieName.trim()===name){
         const cookieValue = decodeURIComponent(cookie[1]);
-
+          console.log(cookieValue);
         return JSON.parse(cookieValue);
       }
     }
-    return null;
-  }
+    return null;
+}
