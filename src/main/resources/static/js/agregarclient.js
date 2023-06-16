@@ -1,5 +1,16 @@
-import { getCookie } from "./export.js"
+import {requestAuthorization,inicio,deleteCookies} from "./export.js";
 
+inicio();
+
+document.querySelector("#cerrarSesion").addEventListener("click",()=>{
+    deleteCookies();
+});
+
+document.getElementById("agregar").addEventListener("click",(e)=>{
+    e.preventDefault();
+
+    agregarCliente();
+});
 
 const agregarCliente = async()=>{
 
@@ -11,14 +22,16 @@ const agregarCliente = async()=>{
     cliente.telefono = document.getElementById("telefono").value;
     cliente.rol = 2;
 
-    let cookie = getCookie("user");
+    let responseToken =await requestAuthorization();
+
+    console.log(responseToken)
 
     let request = await fetch("user/add/client",{
         method: "POST",
         headers: {
             "Accept":"application/json",
             "Content-type": "application/json",
-            "Authorization": cookie.token
+            "Authorization": responseToken
         },
         body: JSON.stringify(cliente)
     });
@@ -27,12 +40,5 @@ const agregarCliente = async()=>{
 
 }
 
-document.getElementById("agregar").addEventListener("click",(e)=>{
-    e.preventDefault();
 
-    agregarCliente();
-});
 
-document.getElementById("cerrarSesion").addEventListener("click",()=>{
-    document.cookie = `user=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
-});

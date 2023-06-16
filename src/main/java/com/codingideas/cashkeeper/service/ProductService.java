@@ -58,7 +58,9 @@ public class ProductService implements IProductService {
 
         Product product = productRespository.findProduct(id);
 
-        productRespository.removeProduct(product);
+        product.setEstado(2);
+
+        productRespository.mergeProduct(product);
 
         return true;
     }
