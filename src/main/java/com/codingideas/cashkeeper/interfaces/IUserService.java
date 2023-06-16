@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface IUserService {
 
-    boolean ediClient(User userEdited, String auth);
+    boolean ediClient(User userEdited, boolean auth);
 
     List getClients();
 
-    String addClient(User user,String auth);
+    String addClient(User user,boolean auth);
 
-    boolean removeClient(String id,String auth);
+    boolean removeClient(String id,boolean auth);
 
     String addUser(User user);
 }

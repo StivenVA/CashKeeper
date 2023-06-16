@@ -21,17 +21,17 @@ public class UserController {
     }
 
     @RequestMapping(value = "delete/client",method = RequestMethod.DELETE)
-    public boolean deleteClient(@RequestBody String id, @RequestHeader(value = "Authorization") String token){
+    public boolean deleteClient(@RequestBody String id, @RequestHeader(value = "Authorization") boolean token){
         return iUserService.removeClient(id,token);
     }
 
     @RequestMapping(value = "add/client",method = RequestMethod.POST)
-    public String addClient(@RequestBody User user,@RequestHeader(value = "Authorization") String token){
+    public String addClient(@RequestBody User user,@RequestHeader(value = "Authorization") boolean token){
        return iUserService.addClient(user,token);
     }
 
     @RequestMapping(value = "edit/client",method = RequestMethod.POST)
-    public boolean editClient(@RequestBody User userEdited,@RequestHeader(value="Authorization") String token){
+    public boolean editClient(@RequestBody User userEdited,@RequestHeader(value="Authorization") boolean token){
         return iUserService.ediClient(userEdited,token);
     }
 

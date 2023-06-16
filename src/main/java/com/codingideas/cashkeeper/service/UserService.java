@@ -23,18 +23,11 @@ public class UserService implements IUserService {
 
     private final UserRepository userRepository;
 
-    private final JWTUtil jwtUtil;
-
-    public boolean verifyToken(String token) {
-        String usuarioId = jwtUtil.getKey(token);
-        System.out.println(usuarioId);
-        return usuarioId!=null;
-    }
 
     @Override
-    public boolean ediClient(User userEdited, String token) {
+    public boolean ediClient(User userEdited, boolean token) {
 
-        if(!verifyToken(token)) return false;
+        if(!token) return false;
 
         User user = userRepository.findUser(userEdited.getId());
 
@@ -57,8 +50,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public String addClient(User user, String token) {
-        if (!verifyToken(token)) return "El tiempo de estadia ha expirado, por favor inicie sesion nuevamente";
+    public String addClient(User user, boolean token) {
+        if (!token) return "El tiempo de estadia ha expirado, por favor inicie sesion nuevamente";
 
         if (userRepository.findUser(user.getId())!=null) return "Ya se encuentra un cliente registrado con ese numero de identidad";
 
@@ -68,10 +61,10 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public boolean removeClient(String id, String token) {
+    public boolean removeClient(String id, boolean token) {
         User user = userRepository.findUser(id);
 
-        if(!verifyToken(token)) return false;
+        if(!token) return false;
 
         userRepository.removeUser(user);
 
@@ -85,7 +78,7 @@ public class UserService implements IUserService {
         String hashedPassword = argon.hash(3,1024,2,user.getPassword());
         user.setPassword(hashedPassword);
 
-        User id = user;
+        User id = userRepository.findUser(user.getId());
 
         User email = userRepository.findUserForEmail(user.getEmail());
 

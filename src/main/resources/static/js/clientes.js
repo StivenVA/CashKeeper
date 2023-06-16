@@ -1,3 +1,7 @@
+import {requestAuthorization,inicio,deleteCookies} from "./export.js";
+
+inicio();
+
 const traerClientes = async()=>{
     let request = await fetch("/user/get/clients", {
         method:"GET"
@@ -24,3 +28,7 @@ const traerClientes = async()=>{
 }
 
 window.addEventListener("DOMContentLoaded", traerClientes);
+
+document.querySelector("#cerrarSesion").addEventListener("click",()=>{
+    deleteCookies();
+});

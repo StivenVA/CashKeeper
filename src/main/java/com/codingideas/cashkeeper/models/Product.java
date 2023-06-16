@@ -20,4 +20,7 @@ public class Product {
 
     @Column(name = "precio")
     private Long precio;
+
+    @Column(name = "estado")
+    private int estado;
 }

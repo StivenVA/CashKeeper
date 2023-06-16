@@ -30,7 +30,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/delete")
-    public boolean deleteProduct(@RequestBody String id_product,@RequestHeader boolean auth){
+    public boolean deleteProduct(@RequestBody String id_product,@RequestHeader(value = "Authorization") boolean auth){
         return iProductService.deleteProduct(id_product,auth);
     }
 
