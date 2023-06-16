@@ -2,7 +2,10 @@ package com.codingideas.cashkeeper.service;
 
 import com.codingideas.cashkeeper.interfaces.IUserService;
 import com.codingideas.cashkeeper.models.User;
+import com.codingideas.cashkeeper.repository.UserRepository;
 import com.codingideas.cashkeeper.utils.JWTUtil;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
@@ -18,8 +21,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UserService implements IUserService {
 
-    @PersistenceContext
-    private final EntityManager entityManager;
+    private final UserRepository userRepository;
 
     private final JWTUtil jwtUtil;
 
@@ -34,20 +36,20 @@ public class UserService implements IUserService {
 
         if(!verifyToken(token)) return false;
 
-        User user = entityManager.find(User.class,userEdited.getId());
+        User user = userRepository.findUser(userEdited.getId());
 
         user.setNombre(userEdited.getNombre());
         user.setDireccion(userEdited.getDireccion());
         user.setTelefono(userEdited.getTelefono());
 
-        entityManager.merge(user);
+        userRepository.mergeUser(user);
 
         return true;
     }
 
     @Override
     public List getClients() {
-        List<User> users  = entityManager.createQuery("FROM User where rol!=1").getResultList();
+        List<User> users  = userRepository.getClients();
 
         com.codingideas.cashkeeper.mapper.MapperUser mapperUser = new com.codingideas.cashkeeper.mapper.MapperUser();
 
@@ -58,21 +60,40 @@ public class UserService implements IUserService {
     public String addClient(User user, String token) {
         if (!verifyToken(token)) return "El tiempo de estadia ha expirado, por favor inicie sesion nuevamente";
 
-        if (entityManager.find(User.class,user.getId())!=null) return "Ya se encuentra un cliente registrado con ese numero de identidad";
+        if (userRepository.findUser(user.getId())!=null) return "Ya se encuentra un cliente registrado con ese numero de identidad";
 
-        entityManager.merge(user);
+        userRepository.mergeUser(user);
 
         return  "El usuario ha sido añadido exitosamente";
     }
 
     @Override
     public boolean removeClient(String id, String token) {
-        User user = entityManager.find(User.class,id);
+        User user = userRepository.findUser(id);
 
         if(!verifyToken(token)) return false;
 
-        entityManager.remove(user);
+        userRepository.removeUser(user);
 
         return true;
+    }
+
+    @Override
+    public String addUser(User user) {
+
+        Argon2 argon = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        String hashedPassword = argon.hash(3,1024,2,user.getPassword());
+        user.setPassword(hashedPassword);
+
+        User id = user;
+
+        User email = userRepository.findUserForEmail(user.getEmail());
+
+        if (id != null) return "Ya existe una cuenta asociada a este numero de identidad";
+        if (email!=null) return "Ya existe una cuenta asociada a este correo";
+
+        userRepository.mergeUser(user);
+        return "Registro exitoso";
+
     }
 }

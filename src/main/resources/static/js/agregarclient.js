@@ -22,9 +22,8 @@ const agregarCliente = async()=>{
         },
         body: JSON.stringify(cliente)
     });
-    let response = await request.json();
+    let response = await request.text();
     alert(response);
-
 
 }
 
