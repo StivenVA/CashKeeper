@@ -1,14 +1,15 @@
 package com.codingideas.cashkeeper.repository;
 
+import com.codingideas.cashkeeper.dto.TotalInventoryDTO;
 import com.codingideas.cashkeeper.models.Inventory;
 import com.codingideas.cashkeeper.models.Product;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor

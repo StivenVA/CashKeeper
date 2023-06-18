@@ -2,7 +2,9 @@ package com.codingideas.cashkeeper.controllers;
 
 import com.codingideas.cashkeeper.interfaces.InventoryInterface;
 import com.codingideas.cashkeeper.models.Inventory;
+import com.codingideas.cashkeeper.models.InventoryRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +34,8 @@ public class InventoryController {
         return inventoryInterface.updateInventory(auth, inventoryList);
     }
 
-    /*public List totalInventory(){
-
-    }*/
+    @RequestMapping(value = "/total")
+    public ResponseEntity<InventoryRequest> totalInventory(@RequestHeader(value = "Authorization")boolean auth){
+        return inventoryInterface.totalInventory(auth);
+    }
 }
