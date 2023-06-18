@@ -20,7 +20,7 @@ public class MapperInventory {
         return inventoryDTO;
     }
 
-    public TotalInventoryDTO inventoryAndOrdersToTotalInventoryDTO(Inventory inventory, Order order){
+    public TotalInventoryDTO inventoryAndOrdersToTotalInventoryDTO(Inventory inventory){
         TotalInventoryDTO totalInventoryDTO = new TotalInventoryDTO();
 
         return totalInventoryDTO;

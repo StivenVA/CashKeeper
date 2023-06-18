@@ -24,4 +24,8 @@ public class OrderService implements IOrderService {
         return orderRepository.getLastOrders()
                 .stream().map(mapperOrderDTO::orderToOrderDTO).collect(Collectors.toList());
     }
+
+    public boolean makeOrder(){
+        return false;
+    }
 }

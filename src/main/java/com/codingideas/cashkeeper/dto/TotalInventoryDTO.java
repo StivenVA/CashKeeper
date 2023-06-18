@@ -1,8 +1,17 @@
 package com.codingideas.cashkeeper.dto;
 
-import java.time.LocalDate;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public class TotalInventoryDTO {
+import java.time.LocalDate;
+import java.util.List;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class TotalInventoryDTO{
+    private String id_producto;
     private String descripcion;
     private int cantidad;
     private LocalDate fecha;

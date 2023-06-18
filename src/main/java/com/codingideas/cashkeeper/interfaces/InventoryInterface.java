@@ -1,6 +1,8 @@
 package com.codingideas.cashkeeper.interfaces;
 
 import com.codingideas.cashkeeper.models.Inventory;
+import com.codingideas.cashkeeper.models.InventoryRequest;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -12,5 +14,5 @@ public interface InventoryInterface {
 
     public boolean editInventory(boolean auth, Inventory inventory);
 
-    List totalInventory();
+    ResponseEntity<InventoryRequest> totalInventory(boolean auth);
 }
