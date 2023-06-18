@@ -21,9 +21,11 @@ const traerClientes = async()=>{
 
     let html = "";
 
+    const tbody = document.querySelector("#dataTable tbody");
+
     clientes.forEach(cliente => {
-    
-        html+=` <tr>
+
+        html=` <tr>
         <td>${cliente.id}</td>
         <td>${cliente.nombre}</td>
         <td>${cliente.direccion}</td>
@@ -36,9 +38,11 @@ const traerClientes = async()=>{
             </a>
         </td>
     </tr>`;
+        document.querySelector("#dataTable tbody").insertAdjacentHTML("beforeend",html);
+
     });
-    
-    document.querySelector("#dataTable tbody").innerHTML = html;
+
+
 }
 
 window.addEventListener("DOMContentLoaded", ()=>{
