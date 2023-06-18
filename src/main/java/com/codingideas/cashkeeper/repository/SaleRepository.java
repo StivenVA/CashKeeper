@@ -21,8 +21,8 @@ public class SaleRepository {
     @PersistenceContext
     private final EntityManager entityManager;
 
-    public List<Sale> getProducts(){
-        return entityManager.createQuery("from Sale order by id_factura.id_factura").getResultList();
+    public List<Sale> getProducts(int id){
+        return entityManager.createQuery("from Sale where id_factura.id_factura="+id).getResultList();
     }
 
     public List<Long> getNumberOfProductsForBill(){

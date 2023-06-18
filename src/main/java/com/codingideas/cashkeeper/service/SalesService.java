@@ -37,12 +37,11 @@ public class SalesService implements ISalesService {
 
         List<SalesDTO> salesDTOList= new ArrayList<>();
 
-        List<Sale> productos = saleRepository.getProducts();
-
        for (int i = 0; i < listaDeFacturas.size(); i++) {
 
            Long cantidadProductos = cantidadProductosPorFactura.get(i);
            List<ProductDTO> productsDTO = new ArrayList<>();
+           List<Sale> productos = saleRepository.getProducts(listaDeFacturas.get(i).getId_factura());
 
            for (int j = 0; j < cantidadProductos.intValue(); j++) {
                MapperProductDTO mapperProductDTO = new MapperProductDTO();

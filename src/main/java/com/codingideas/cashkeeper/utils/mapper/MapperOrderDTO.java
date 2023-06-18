@@ -1,19 +1,21 @@
 package com.codingideas.cashkeeper.utils.mapper;
 
 import com.codingideas.cashkeeper.dto.OrderDTO;
+import com.codingideas.cashkeeper.dto.ProductDTO;
 import com.codingideas.cashkeeper.models.Order;
+
+import java.util.List;
 
 public class MapperOrderDTO {
 
-    public OrderDTO orderToOrderDTO(Order order){
+    public OrderDTO orderToOrderDTO(Order order, List<ProductDTO> productos){
         OrderDTO orderDTO = new OrderDTO();
 
         orderDTO.setHora(order.getHora());
         orderDTO.setFecha(order.getFecha());
-        orderDTO.setCantidadProducto(order.getCantidad());
         orderDTO.setIdProveedor(order.getId_proveedor().getId_proveedor());
-        orderDTO.setDescripcionProducto(order.getId_producto().getDescripcion());
         orderDTO.setNombreProveedor(order.getId_proveedor().getNombre());
+        orderDTO.setProductos(productos);
 
         return orderDTO;
     }
