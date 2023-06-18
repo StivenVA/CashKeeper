@@ -25,7 +25,7 @@ public class SaleRepository {
         return entityManager.createQuery("from Sale order by id_factura.id_factura").getResultList();
     }
 
-    public List<Long> getNumberOfBills(){
+    public List<Long> getNumberOfProductsForBill(){
         return entityManager
                 .createQuery("select count(id_factura) from Sale group by id_factura").getResultList();
     }
@@ -38,7 +38,7 @@ public class SaleRepository {
 
         List<Sale> sale=entityManager.createQuery("from Sale where id_factura=:id_factura and id_producto=:id_producto")
                 .setParameter("id_factura",saleEdited.getId_factura())
-                .setParameter("is_producto",saleEdited.getId_producto()).getResultList();
+                .setParameter("id_producto",saleEdited.getId_producto()).getResultList();
 
         sale.get(0).setCantidad(saleEdited.getCantidad());
 

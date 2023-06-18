@@ -52,7 +52,10 @@
         cookie.rol = response.user.rol;
         cookie.token = response.token;
 
-        document.cookie = `user=${encodeURIComponent(JSON.stringify(cookie))};path=/`;
+        let time = {};
+        let date= new Date(Date.now() + 3600000);
+        time.date = date;
+        document.cookie = `user=${encodeURIComponent(JSON.stringify(cookie))};path=/;time=${encodeURIComponent(time)};path=/`;
 
         window.location = 'inicio.html';
     }

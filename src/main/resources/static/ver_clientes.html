@@ -281,7 +281,52 @@
                 <div class="modal-body">¿Estas seguro que deseas cerrar sesión?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="index.html">Cerrar sesión</a>
+                    <a class="btn btn-primary" id="cerrarSesion" data-dismiss="modal">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="eliminarCliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">¿Esta seguro que desea eliminar el cliente?</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-primary" id="eliminar" data-eliminarCliente href="#" data-dismiss="modal">Aceptar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editarCliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar informacion del cliente</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h6>nombre</h6>
+                    <input type="text" id="nombre">
+                    <h6>direccion</h6>
+                    <input type="text" id="direccion">
+                    <h6>telefono</h6>
+                    <input type="text" id="telefono">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-primary" id="editar" data-editarCliente href="#" data-dismiss="modal">Aceptar</a>
                 </div>
             </div>
         </div>

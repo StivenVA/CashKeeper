@@ -16,8 +16,8 @@ public class UserController {
     private final IUserService iUserService;
  
     @RequestMapping(value = "get/clients")
-    public List<ClientDTO> getClients(){
-        return iUserService.getClients();
+    public List<ClientDTO> getClients(@RequestHeader(value = "Authorization")boolean auth){
+        return iUserService.getClients(auth);
     }
 
     @RequestMapping(value = "delete/client",method = RequestMethod.DELETE)

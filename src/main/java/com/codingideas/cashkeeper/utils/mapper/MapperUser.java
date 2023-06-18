@@ -1,4 +1,4 @@
-package com.codingideas.cashkeeper.mapper;
+package com.codingideas.cashkeeper.utils.mapper;
 
 import com.codingideas.cashkeeper.dto.ClientDTO;
 import com.codingideas.cashkeeper.models.User;

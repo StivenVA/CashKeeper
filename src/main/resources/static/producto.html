@@ -241,12 +241,12 @@
                             </div>
                         </div>
                     </div>
-                    
+                    <a href="#" id="agregar" data-toggle="modal" data-target="#add"><img src="img/plus-pequeno.svg" alt="" class="acciones">Añadir nuevo producto</a>
                 </div>
                 <!-- /.container-fluid -->
 
                 
-                <a href="#"><img src="img/plus-pequeno.svg" alt="" class="acciones">Añadir nuevo producto</a>
+
             </div>
             <!-- End of Main Content -->
 
@@ -285,7 +285,7 @@
                 <div class="modal-body">¿Estas seguro que deseas cerrar sesión?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" id="cerrarSesion" href="index.html">Cerrar sesión</a>
+                    <a class="btn btn-primary" id="cerrarSesion" data-dismiss="modal">Cerrar sesión</a>
                 </div>
             </div>
         </div>
@@ -296,15 +296,18 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Actualizar informacion del producto</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Actualizar informacion del producto</div>
+                <div class="modal-body">
+                    <h6>Precio del producto</h6>
+                    <input type="number" min="0" id="precio">
+                </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" id="actualizar" href="#">Actualizar</a>
+                    <a class="btn btn-primary" id="actualizar" data-producto href="#" data-dismiss="modal">Actualizar</a>
                 </div>
             </div>
         </div>
@@ -323,7 +326,35 @@
                 <div class="modal-body">¿Esta seguro que desea descontinuar el producto?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" data-producto id="eliminar" href="#">Aceptar</a>
+                    <a class="btn btn-primary" id="eliminar" href="#" data-dismiss="modal">Aceptar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Agregar un producto</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Identificacion del producto</p>
+                    <input type="text" placeholder="id" id="idNuevoProducto">
+                    <br>
+                    <p>Descripcion del nuevo producto</p>
+                    <input type="text" placeholder="Descripcion" id="descripcioNuevoProducto">
+                    <br>
+                    <p>Precio del nuevo producto</p>
+                    <input type="number" min="0" placeholder="precio" id="precioNuevoProducto">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-primary" id="agregarProducto" href="#" data-dismiss="modal">Crear producto</a>
                 </div>
             </div>
         </div>

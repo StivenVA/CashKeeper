@@ -14,6 +14,8 @@ export const getCookie = (name)=>{
 
 export const requestAuthorization = async ()=>{
 
+    if (getCookie("user")===null) return;
+
     let cookie = getCookie("user");
 
     let requestToken = await fetch("auth/token",{
@@ -28,9 +30,17 @@ export const requestAuthorization = async ()=>{
 }
 
 export const inicio = ()=>{
-    document.querySelector("#userDropdown span").innerHTML = getCookie("user").nombre;
+    if (getCookie("user")!==null) document.querySelector("#userDropdown span").innerHTML = getCookie("user").nombre;
 };
 
 export const deleteCookies = ()=>{
     document.cookie = `user=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
+}
+
+export const error404 = async ()=>{
+    const request = await fetch("../404.html");
+
+    const response = await request.text();
+
+    document.querySelector(".container-fluid").innerHTML = response;
 }
