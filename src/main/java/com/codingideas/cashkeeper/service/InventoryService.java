@@ -75,7 +75,7 @@ public class InventoryService implements InventoryInterface {
         List<Order> orders = orderRepository.getLastOrders();
         List<Inventory> inventory= inventoryRespository.getLastInventory();
 
-        if (inventory.get(0).getFecha()!=orders.get(0).getFecha()) return ResponseEntity.badRequest().body(new InventoryRequest(null,"Las fecha del ultimo pedido y del inventario no coinciden"));
+        if (!inventory.get(0).getFecha().isEqual(orders.get(0).getFecha())) return ResponseEntity.badRequest().body(new InventoryRequest(null,"Las fecha del ultimo pedido y del inventario no coinciden"));
 
         for (int i = 0; i < products.size(); i++) {
 

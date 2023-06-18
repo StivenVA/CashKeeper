@@ -16,7 +16,7 @@ public class OrderController {
     private final IOrderService iOrderService;
 
     @RequestMapping(value = "/get")
-    public List getOrders(@RequestHeader(value = "Authorization") boolean auth){
-        return iOrderService.getLastOrders(auth);
+    public List getOrders(/*@RequestHeader(value = "Authorization") boolean auth*/){
+        return iOrderService.getLastOrders(true);
     }
 }
