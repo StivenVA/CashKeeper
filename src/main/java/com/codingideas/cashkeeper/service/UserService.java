@@ -4,6 +4,7 @@ import com.codingideas.cashkeeper.interfaces.IUserService;
 import com.codingideas.cashkeeper.models.User;
 import com.codingideas.cashkeeper.repository.UserRepository;
 import com.codingideas.cashkeeper.utils.JWTUtil;
+import com.codingideas.cashkeeper.utils.mapper.MapperUser;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 import jakarta.persistence.EntityManager;
@@ -41,12 +42,12 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public List getClients() {
-        List<User> users  = userRepository.getClients();
+    public List getClients(boolean auth) {
+        if (!auth) return null;
 
-        com.codingideas.cashkeeper.mapper.MapperUser mapperUser = new com.codingideas.cashkeeper.mapper.MapperUser();
+        MapperUser mapperUser= new MapperUser();
 
-        return users.stream().map(mapperUser::userToClientDto).collect(Collectors.toList());
+        return userRepository.getClients().stream().map(mapperUser::userToClientDto).collect(Collectors.toList());
     }
 
     @Override
@@ -66,7 +67,8 @@ public class UserService implements IUserService {
 
         if(!token) return false;
 
-        userRepository.removeUser(user);
+        user.setRol(3);
+        userRepository.mergeUser(user);
 
         return true;
     }

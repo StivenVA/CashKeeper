@@ -26,7 +26,7 @@ public class UserRepository {
     }
 
     public List<User> getClients(){
-        return entityManager.createQuery("FROM User where rol!=1").getResultList();
+        return entityManager.createQuery("FROM User where rol=2").getResultList();
     }
 
     public void removeUser(User user){

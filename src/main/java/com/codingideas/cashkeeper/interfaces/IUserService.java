@@ -8,7 +8,7 @@ public interface IUserService {
 
     boolean ediClient(User userEdited, boolean auth);
 
-    List getClients();
+    List getClients(boolean auth);
 
     String addClient(User user,boolean auth);
 

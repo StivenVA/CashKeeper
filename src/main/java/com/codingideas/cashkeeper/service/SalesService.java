@@ -5,7 +5,9 @@ import com.codingideas.cashkeeper.dto.ProductDTO;
 import com.codingideas.cashkeeper.dto.SalesDTO;
 import com.codingideas.cashkeeper.interfaces.ISalesService;
 import com.codingideas.cashkeeper.models.Bill;
+import com.codingideas.cashkeeper.models.Product;
 import com.codingideas.cashkeeper.models.Sale;
+import com.codingideas.cashkeeper.repository.ProductRespository;
 import com.codingideas.cashkeeper.repository.SaleRepository;
 import com.codingideas.cashkeeper.utils.mapper.MapperProductDTO;
 import com.codingideas.cashkeeper.utils.mapper.MapperSale;
@@ -24,12 +26,14 @@ import java.util.List;
 public class SalesService implements ISalesService {
 
     private  final  SaleRepository saleRepository;
+    private final ProductRespository productRespository;
+
     @Override
     public List getSales() {
 
         List<Bill> listaDeFacturas = saleRepository.getBills();
 
-        List<Long> cantidadProductosPorFactura = saleRepository.getNumberOfBills();
+        List<Long> cantidadProductosPorFactura = saleRepository.getNumberOfProductsForBill();
 
         List<SalesDTO> salesDTOList= new ArrayList<>();
 

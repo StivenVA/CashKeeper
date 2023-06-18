@@ -1,9 +1,10 @@
-import {requestAuthorization,inicio,deleteCookies} from "./export.js";
+import {requestAuthorization,inicio,deleteCookies,error404} from "./export.js";
 
 inicio();
 
 document.querySelector("#cerrarSesion").addEventListener("click",()=>{
     deleteCookies();
+    window.location = "index.html";
 });
 
 document.getElementById("agregar").addEventListener("click",(e)=>{
@@ -11,6 +12,11 @@ document.getElementById("agregar").addEventListener("click",(e)=>{
 
     agregarCliente();
 });
+
+window.addEventListener("DOMContentLoaded",async ()=>{
+    const auth =await requestAuthorization();
+    if (!auth) error404();
+})
 
 const agregarCliente = async()=>{
 
@@ -24,7 +30,7 @@ const agregarCliente = async()=>{
 
     let responseToken =await requestAuthorization();
 
-    console.log(responseToken)
+    if (!responseToken){error404(); return;}
 
     let request = await fetch("user/add/client",{
         method: "POST",
