@@ -1,6 +1,7 @@
 package com.codingideas.cashkeeper.controllers;
 
 
+import com.codingideas.cashkeeper.dto.SalesDTO;
 import com.codingideas.cashkeeper.interfaces.ISalesService;
 import com.codingideas.cashkeeper.models.Sale;
 import lombok.RequiredArgsConstructor;
@@ -16,8 +17,8 @@ public class SalesController {
     private final ISalesService iSalesService;
 
     @RequestMapping(value = "/get")
-    public List getSales() {
-        return iSalesService.getSales();
+    public List getSales(@RequestHeader(value = "Authorization")boolean auth) {
+        return iSalesService.getSales(auth);
     }
 
     @RequestMapping(value="edit",method = RequestMethod.POST)
@@ -26,7 +27,7 @@ public class SalesController {
     }
 
     @RequestMapping(value = "/add")
-    public String registerSale(@RequestBody Sale sale,@RequestHeader(value = "Authorization") boolean auth){
-        return  iSalesService.registerSale(sale,auth);
+    public String registerSale(@RequestBody SalesDTO salesDTO, @RequestHeader(value = "Authorization") boolean auth){
+        return  iSalesService.registerSale(salesDTO,auth);
     }
 }

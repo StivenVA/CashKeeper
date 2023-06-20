@@ -7,16 +7,16 @@ import com.codingideas.cashkeeper.interfaces.ISalesService;
 import com.codingideas.cashkeeper.models.Bill;
 import com.codingideas.cashkeeper.models.Product;
 import com.codingideas.cashkeeper.models.Sale;
+import com.codingideas.cashkeeper.models.User;
 import com.codingideas.cashkeeper.repository.ProductRespository;
 import com.codingideas.cashkeeper.repository.SaleRepository;
+import com.codingideas.cashkeeper.repository.UserRepository;
 import com.codingideas.cashkeeper.utils.mapper.MapperProductDTO;
 import com.codingideas.cashkeeper.utils.mapper.MapperSale;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,11 +26,13 @@ import java.util.List;
 public class SalesService implements ISalesService {
 
     private  final  SaleRepository saleRepository;
+    private final UserRepository userRepository;
     private final ProductRespository productRespository;
 
     @Override
-    public List getSales() {
+    public List getSales(boolean auth) {
 
+        if (!auth) return null;
         List<Bill> listaDeFacturas = saleRepository.getBills();
 
         List<Long> cantidadProductosPorFactura = saleRepository.getNumberOfProductsForBill();
@@ -45,7 +47,7 @@ public class SalesService implements ISalesService {
 
            for (int j = 0; j < cantidadProductos.intValue(); j++) {
                MapperProductDTO mapperProductDTO = new MapperProductDTO();
-               ProductDTO productDTO = mapperProductDTO.productToProductDTO(productos.get(j).getId_producto(),productos.get(j).getCantidad());
+               ProductDTO productDTO = mapperProductDTO.productToProductDTO(productos.get(j).getId_producto(),productos.get(j).getCantidad(),productos.get(j).getPrecio());
                productsDTO.add(productDTO);
            }
 
@@ -68,19 +70,28 @@ public class SalesService implements ISalesService {
     }
 
     @Override
-    public String registerSale(Sale sale,boolean auth){
+    public String registerSale(SalesDTO saleDTO,boolean auth){
 
         if (!auth) return "";
+        MapperSale mapperSale = new MapperSale();
+        User user = userRepository.findUser(saleDTO.getId_cliente());
 
-        LocalTime hora = LocalTime.now();
-        LocalDate fecha = LocalDate.now();
+        saleRepository.mergeBill(mapperSale.saleDTOtoBill(saleDTO,user));
 
-        Bill bill = new Bill();
-        bill.setHora(hora);
-        bill.setFecha(fecha);
-        bill.setTotal(sale.getId_factura().getTotal());
+        for (ProductDTO productDTO: saleDTO.getProducts()) {
 
-        saleRepository.addSale(sale,bill);
+            Sale sale = new Sale();
+            Product product = productRespository.findProduct(productDTO.getId_producto());
+            Bill bill = saleRepository.findBill(saleDTO.getId_factura());
+
+            sale.setId_producto(product);
+            sale.setId_factura(bill);
+            sale.setCantidad(productDTO.getCantidad());
+            sale.setPrecio(product.getPrecio());
+
+            saleRepository.mergeSale(sale);
+        }
+
         return "OK";
     }
 }

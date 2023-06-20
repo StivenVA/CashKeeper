@@ -19,5 +19,5 @@ public class SalesDTO {
     private LocalDate fecha;
     private LocalTime hora;
     private String nombreCliente;
-
+    private String id_cliente;
 }

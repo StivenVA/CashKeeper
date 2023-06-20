@@ -54,10 +54,15 @@ public class SaleRepository {
         entityManager.merge(bill);
     }
 
-    public void addSale(@NotNull Sale sale,@NotNull Bill bill){
-
+    public void mergeBill(Bill bill){
         entityManager.merge(bill);
-        sale.setId_factura(bill);
+    }
+
+    public void mergeSale(Sale sale){
         entityManager.merge(sale);
+    }
+
+    public Bill findBill(int id){
+        return entityManager.find(Bill.class,id);
     }
 }

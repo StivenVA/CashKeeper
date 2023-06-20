@@ -5,13 +5,14 @@ import com.codingideas.cashkeeper.models.Product;
 
 public class MapperProductDTO {
 
-    public ProductDTO productToProductDTO(Product product,int cantidad){
+    public ProductDTO productToProductDTO(Product product,int cantidad,Long precio){
 
         ProductDTO productDTO = new ProductDTO();
 
         productDTO.setCantidad(cantidad);
         productDTO.setDescripcion(product.getDescripcion());
         productDTO.setId_producto(product.getId());
+        productDTO.setPrecio(precio);
 
         return productDTO;
     }
