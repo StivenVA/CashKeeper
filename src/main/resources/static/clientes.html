@@ -18,6 +18,10 @@
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital@1&family=Diphylleia&family=Imprima&family=Open+Sans:ital,wght@0,300;1,400&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+
     <!-- Custom styles for this template-->
     <link href="css/inicio2.css" rel="stylesheet">
     <link href="css/registro.css" rel="stylesheet">
@@ -79,8 +83,8 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="ver_prov.html.html">Ver proveedores</a>
-                        <a class="collapse-item" href="utilities-border.html">Añadir proveedor</a>
+                        <a class="collapse-item" href="ver_proveedores.html">Ver proveedores</a>
+                        <a class="collapse-item" href="añadir_proveedor.html">Añadir proveedor</a>
                     </div>
                 </div>
             </li>
@@ -94,7 +98,8 @@
                 <div id="inventario" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="utilities-color.html">Ver</a>
+                        <a class="collapse-item" href="ver_inventario.html">Ver</a>
+                        <a class="collapse-item" href="registrar_pedido.html">Registrar Pedido</a>
                         <a class="collapse-item" href="utilities-border.html">Actualizar</a>
                     </div>
                 </div>
@@ -119,7 +124,7 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.html">Registrar Venta</a>
+                        <a class="collapse-item" href="registrar_venta.html">Registrar Venta</a>
                         <a class="collapse-item" href="register.html">Ver cuentas</a>
                         <div class="collapse-divider"></div>
                     </div>
@@ -217,37 +222,34 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <h1><img src="img/icons8-crowd-skin-type-1-100.png" class="añadir">  Añadir un nuevo cliente</h1>
-
-                    <div class="mx-auto">
+                    <h1><img src="img/icons8-crowd-skin-type-1-100.png" class="agregar">  Añadir un nuevo cliente</h1>
 
                     <form action="" method="post" id="form">
                         <div class="form">
                             <div class="grupo">
-                                <input type="text" id="nombre" required><span class="barra"></span>
+                                <input type="text" id="nombre" required="">
                                 <label for=""  class="label"><img src="img/icons8-nombre-100.png" class="img">Nombre</label>
+                                
                             </div>
 
                             <div class="grupo">
-                                <input type="text" id="idCliente" required>
+                                <input minlength="8" maxlength="10" type="text" id="idCliente" required="" pattern="[0-9]+">
                                 <label for="" class="label"><img src="img/icons8-identificación-100.png" class="img">NIT/ID</label>
                             </div>
 
                             <div class="grupo">
-                                <input type="text" id="direccion" required>
+                                <input type="text" id="direccion" required="">
                                 <label for="" class="label"><img src="img/icons8-compra-entregada-100.png" class="img">Dirección</label>
                             </div>
 
                             <div class="grupo">
-                                <input type="text" id="telefono" required>
+                                <input minlength="10" maxlength="10" type="text" id="telefono" required="" pattern="[0-9]+">
                                 <label for="" class="label"><img src="img/icons8-volumen-del-timbre-100.png" class="img">Teléfono</label>
                             </div>
 
-                            <button id="agregar" type="submit">Añadir</button>
+                            <button type="submit" href="#" id="agregar">Añadir</button>
                         </div>
                     </form>
-                </div>
-
                 </div>
                 <!-- /.container-fluid -->
 

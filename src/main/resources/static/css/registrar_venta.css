@@ -1,0 +1,69 @@
+.container-fluid{
+    color: black;
+    font-family: 'Bodoni Moda', serif;
+    font-family: 'Diphylleia', serif;
+    font-family: 'Imprima', sans-serif;
+    font-size: 18px;
+}
+.registro-header{
+    padding: 1em;
+    overflow: hidden;
+}
+
+.registrar{
+    margin: 1em;
+    padding: 1em;
+    color: black;
+    float: left;
+    width: 200px;
+}
+.caja{
+    border-radius: 10px;
+    width: 100%;
+    background: #e77d7d;
+    border: none;
+}
+
+.caja{
+    border-radius: 5px;
+    width: 100%;
+    background: #e77d7d;
+    border: none;
+}
+
+.registrar button{
+    border-radius: 10px;
+    width: 100px;
+    background: #ecb3b3;
+    cursor: pointer;
+    border: none;
+    border: solid 1px #e77d7d;
+}
+
+.registrar button:hover{
+    background-color: #7dc9e7;
+    border: none;
+    border: solid 1px #3fa0c7;
+}
+
+.total{
+    width: 100%;
+    padding: 1em;
+    
+}
+.total input{
+    width: 200px;
+}
+.total button{
+    background-color: #ecb3b3;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    margin-left: 35em;
+    border: solid 1px #e77d7d;
+}
+.total button:hover{
+    background-color: #7dc9e7;
+    border: none;
+    border: solid 1px #3fa0c7;
+}

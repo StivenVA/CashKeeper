@@ -24,8 +24,9 @@
 
     <!-- Custom styles for this template-->
     <link href="css/inicio2.css" rel="stylesheet">
-    <link href="css/acciones.css" rel="stylesheet">
+    <link href="css/registro.css" rel="stylesheet">
     <link href="css/estilos.css" rel="stylesheet">
+
 
 </head>
 
@@ -38,7 +39,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-          
+
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -128,9 +129,9 @@
                         <div class="collapse-divider"></div>
                     </div>
                 </div>
-            </li> 
+            </li>
 
-            
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -193,7 +194,7 @@
                             </div>
                         </li>
 
-                        
+
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -220,40 +221,44 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
-                    <div class="tabla">
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Clientes</h6>
-                                <input placeholder="cliente"/>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>Número de documento</th>
-                                                <th>Nombre</th>
-                                                <th>Dirección</th>
-                                                <th>Teléfono</th>
-                                                <th>Acciones</th>
-                                            </tr>
-                                        </thead>
-                                
-                                        <tbody>
-                                        
-                                        </tbody>
-                                    </table>
+                <div class="container-fluid"> 
+                        <h1><img src="img/icons8-crowd-skin-type-1-100.png" class="agregar">  Añadir un nuevo Proveedor</h1>
+
+                        <form action="" method="post" id="form">
+                            <div class="form">
+                                <div class="grupo">
+                                    <input type="text" id="nombre" required><span class="barra"></span>
+                                    <label for=""  class="label"><img src="img/icons8-nombre-100.png" class="img">Nombre</label>
                                 </div>
+
+                                <div class="grupo">
+                                    <input type="text" id="idCliente" required>
+                                    <label for="" class="label"><img src="img/icons8-identificación-100.png" class="img">NIT/ID</label>
+                                </div>
+
+                                <div class="grupo">
+                                    <input type="email" id="direccion" required>
+                                    <label for="" class="label"><img src="img/icons8-mail.svg" class="img">Gmail</label>
+                                </div>
+
+                                <div class="grupo">
+                                    <input type="text" id="telefono" required>
+                                    <label for="" class="label"><img src="img/icons8-volumen-del-timbre-100.png" class="img">Teléfono</label>
+                                </div>
+
+                                <button href="#" id="agregar">Añadir</button>
                             </div>
-                        </div>
-                    </div>
+                        </form>
                 </div>
                 <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
 
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+            </footer>
+            <!-- End of Footer -->
 
         </div>
         <!-- End of Content Wrapper -->
@@ -280,52 +285,7 @@
                 <div class="modal-body">¿Estas seguro que deseas cerrar sesión?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" id="cerrarSesion" data-dismiss="modal">Cerrar sesión</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="eliminarCliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"></h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">¿Esta seguro que desea eliminar el cliente?</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" id="eliminar" data-eliminarCliente href="#" data-dismiss="modal">Aceptar</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="editarCliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Editar informacion del cliente</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h6>nombre</h6>
-                    <input type="text" id="nombre">
-                    <h6>direccion</h6>
-                    <input type="text" id="direccion">
-                    <h6>telefono</h6>
-                    <input type="text" id="telefono">
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" id="editar" data-editarCliente href="#" data-dismiss="modal">Aceptar</a>
+                    <a class="btn btn-primary" data-dismiss="modal" id="cerrarSesion">Cerrar sesión</a>
                 </div>
             </div>
         </div>
@@ -341,8 +301,7 @@
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 
-  
-    <script src="js/clientes.js" type="module"></script>
+    <script src="js/agregarclient.js" type="module"></script>
 
 </body>
 

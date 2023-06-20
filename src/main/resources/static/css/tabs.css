@@ -1,0 +1,102 @@
+.tabs{
+    max-width: 100%;
+    margin: auto;
+}
+/*.lbl-tab{
+    background: #93D6E4;
+}*/
+.lbl-tab label{
+    display: inline-block;
+    padding: 20px;
+    color: black;
+    cursor: pointer;
+    transition: all 400ms ease;
+}
+.lbl-tab label:hover{
+    background: #23889c9a;
+}
+
+.tab-content{
+    position: relative;
+}
+.tab-content .tab1{
+    position: absolute;
+    width: 100%;
+    transition: all 600ms ease;
+    visibility: hidden;
+    opacity: 0;
+    padding: 30px;
+    color: black;
+}
+.tab-content .tab2{
+    position: absolute;
+    width: 100%;
+    line-height: 1.8;
+    transition: all 600ms ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.90);
+    padding: 30px;
+    padding-bottom: 40px;
+    color: black;
+}
+.tab-content .tab3{
+    position: absolute;
+    transition: all 600ms ease;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.90);
+    padding: 30px;
+    padding-bottom: 40px;
+    color: black;
+}
+#radio1, #radio2, #radio3{
+    display: none;
+}
+#radio1:checked ~ .tab1,
+#radio2:checked ~ .tab2,
+#radio3:checked ~ .tab3{
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+
+.tab-content .tab1:after{
+    position: absolute;
+    content: '';
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid #ff0000;
+    bottom: 100%;
+    left: 45px;
+}
+.tab-content .tab2:after{
+    position: absolute;
+    content: '';
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid #ff0000;
+    bottom: 100%;
+    left: 28px;
+}
+.tab-content .tab3:after{
+    position: absolute;
+    content: '';
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid #ff0000;
+    bottom: 100%;
+    left: 28px;
+}
+.tab-content .tab2:after{
+    left: 155px;
+}
+.tab-content .tab3:after{
+    left: 275px;
+}
+

@@ -17,7 +17,8 @@ public class SupplierService implements ISupplierService {
     private final SupplierRepository supplierRepository;
 
     @Override
-    public List getSuppliers() {
+    public List getSuppliers(boolean auth) {
+        if (!auth) return null;
         return supplierRepository.getSuppliersRepository();
     }
 
