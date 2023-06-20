@@ -19,4 +19,6 @@ public class OrderDTO {
     private List<ProductDTO> productos;
     private LocalDate fecha;
     private LocalTime hora;
+    private Long total;
+    private int idPedido;
 }

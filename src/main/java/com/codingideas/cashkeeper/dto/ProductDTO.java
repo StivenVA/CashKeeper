@@ -13,5 +13,5 @@ public class ProductDTO {
     private int cantidad;
     private String id_producto;
     private String descripcion;
-
+    private Long precio;
 }

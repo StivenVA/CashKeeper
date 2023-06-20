@@ -35,7 +35,7 @@ public class InventoryController {
     }
 
     @RequestMapping(value = "/total")
-    public ResponseEntity<InventoryRequest> totalInventory(/*@RequestHeader(value = "Authorization")boolean auth*/){
-        return inventoryInterface.totalInventory(true);
+    public ResponseEntity<InventoryRequest> totalInventory(@RequestHeader(value = "Authorization")boolean auth){
+        return inventoryInterface.totalInventory(auth);
     }
 }

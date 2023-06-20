@@ -22,4 +22,7 @@ public class Sale {
 
     @Column(name="cantidad")
     private int cantidad;
+
+    @Column(name = "precio_unitario")
+    private Long precio;
 }

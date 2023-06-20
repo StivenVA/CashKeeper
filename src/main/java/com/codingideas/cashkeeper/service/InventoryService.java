@@ -2,10 +2,7 @@ package com.codingideas.cashkeeper.service;
 
 import com.codingideas.cashkeeper.dto.TotalInventoryDTO;
 import com.codingideas.cashkeeper.interfaces.InventoryInterface;
-import com.codingideas.cashkeeper.models.Inventory;
-import com.codingideas.cashkeeper.models.InventoryRequest;
-import com.codingideas.cashkeeper.models.Order;
-import com.codingideas.cashkeeper.models.Product;
+import com.codingideas.cashkeeper.models.*;
 import com.codingideas.cashkeeper.repository.InventoryRespository;
 import com.codingideas.cashkeeper.repository.OrderRepository;
 import com.codingideas.cashkeeper.repository.ProductRespository;
@@ -72,18 +69,19 @@ public class InventoryService implements InventoryInterface {
 
         List<Product> products = productRespository.getProducts();
         List<TotalInventoryDTO> totalInventoryDTOList = new ArrayList<>();
-        List<Order> orders = orderRepository.getLastOrders();
+        List<OrderDetail> orders = orderRepository.getProductsForLastOrder();
         List<Inventory> inventory= inventoryRespository.getLastInventory();
+        List<Order> LastOrder = orderRepository.getLastOrders();
 
-        if (!inventory.get(0).getFecha().isEqual(orders.get(0).getFecha())) return ResponseEntity.badRequest().body(new InventoryRequest(null,"Las fecha del ultimo pedido y del inventario no coinciden"));
+        if (!inventory.get(0).getFecha().isEqual(LastOrder.get(0).getFecha())) return ResponseEntity.badRequest().body(new InventoryRequest(null,"Las fecha del ultimo pedido y del inventario no coinciden"));
 
         for (int i = 0; i < products.size(); i++) {
 
-            TotalInventoryDTO totalInventoryDTO = new TotalInventoryDTO(products.get(i).getId(),products.get(i).getDescripcion(),0,orders.get(0).getFecha());
+            TotalInventoryDTO totalInventoryDTO = new TotalInventoryDTO(products.get(i).getId(),products.get(i).getDescripcion(),0,LastOrder.get(0).getFecha());
             totalInventoryDTOList.add(totalInventoryDTO);
 
             String id_productoInventoryDTO = totalInventoryDTOList.get(i).getId_producto();
-            for (Order order : orders) {
+            for (OrderDetail order : orders) {
 
                 String id_productoOrder = order.getId_producto().getId();
 
