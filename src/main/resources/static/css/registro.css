@@ -3,13 +3,11 @@
     width: 100%;;
     display: flex;
     align-items: center;
-   
     justify-content: center;
-    position: fixed;
     padding: 40px 0;
 }
 .form{
-    width: 100%;
+    width: 60%;
     margin: auto;
     justify-content: center;
     align-items: center;
@@ -25,11 +23,12 @@ form .grupo{
     margin: 45px;
     justify-content: center;
     align-items: center;
+    width: 900px;
 }
 
 input{
     background:#e77d7d ;
-    color: #c6c6c6;
+    color: #000000;
     font-size: 18px;
     padding: 10px 10px 10px 5px;
     display: flex;
@@ -37,7 +36,7 @@ input{
     border: none;
     border-radius: 20px;
     height: 32px;
-    max-width: 40%;
+    max-width: 60%;
 }
 input:focus{
     outline: none;
@@ -58,15 +57,15 @@ input:focus~.label,
 input:valid~.label{
     top: -26px;
     font-size: 14px;
-    color: #0f6ae0;
+    color: #000000;
 }
 button{
     font-family: 'Merienda', cursive;
     background: #CA1C1C;
     border: none;
     display: block;
-    width: 10%;
-    margin: 10px auto;
+    width: 20%;
+    margin: auto;
     color: #FFFFFF;
     height: 30px;
     font-size: 16px;

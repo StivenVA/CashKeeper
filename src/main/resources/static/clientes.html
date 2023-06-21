@@ -99,8 +99,8 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="ver_inventario.html">Ver</a>
-                        <a class="collapse-item" href="registrar_pedido.html">Registrar Pedido</a>
-                        <a class="collapse-item" href="utilities-border.html">Actualizar</a>
+                        <a class="collapse-item" href="registrar_pedido.html">Realizar Pedido</a>
+                        <a class="collapse-item" href="actualizar_inventario.html">Actualizar</a>
                     </div>
                 </div>
             </li>
@@ -125,7 +125,8 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="registrar_venta.html">Registrar Venta</a>
-                        <a class="collapse-item" href="register.html">Ver cuentas</a>
+                        <a class="collapse-item" href="ver_ventas.html">Ver Ventas</a>
+                        <a class="collapse-item" href="cuentas.html">Ver cuentas</a>
                         <div class="collapse-divider"></div>
                     </div>
                 </div>
@@ -227,23 +228,25 @@
                     <form action="" method="post" id="form">
                         <div class="form">
                             <div class="grupo">
-                                <input type="text" id="nombre" required="">
+                                <input type="text" id="nombre" >
                                 <label for=""  class="label"><img src="img/icons8-nombre-100.png" class="img">Nombre</label>
-                                
+
                             </div>
 
                             <div class="grupo">
-                                <input minlength="8" maxlength="10" type="text" id="idCliente" required="" pattern="[0-9]+">
+                                <input type="text" id="idCliente">
                                 <label for="" class="label"><img src="img/icons8-identificación-100.png" class="img">NIT/ID</label>
                             </div>
 
+
+
                             <div class="grupo">
-                                <input type="text" id="direccion" required="">
+                                <input type="text" id="direccion">
                                 <label for="" class="label"><img src="img/icons8-compra-entregada-100.png" class="img">Dirección</label>
                             </div>
 
                             <div class="grupo">
-                                <input minlength="10" maxlength="10" type="text" id="telefono" required="" pattern="[0-9]+">
+                                <input type="text" id="telefono">
                                 <label for="" class="label"><img src="img/icons8-volumen-del-timbre-100.png" class="img">Teléfono</label>
                             </div>
 

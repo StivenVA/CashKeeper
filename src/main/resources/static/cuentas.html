@@ -25,7 +25,7 @@
     <!-- Custom styles for this template-->
     <link href="css/inicio2.css" rel="stylesheet">
     <link href="css/estilos.css" rel="stylesheet">
-    <link href="css/actualizar_inventario.css" rel="stylesheet">
+    <link href="css/acciones.css" rel="stylesheet">
 
 </head>
 
@@ -222,39 +222,48 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
-                <div class="actualizar-contendor">
-                    <h1>Actualizar inventario</h1>
+                <div class="tabla">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary" id="fecha">cuenta del día </h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                        <th>Cliente</th>
+                                        <th>Cantidad</th>
+                                        <th>Pago</th>
+                                        <th>Método de pago</th>
+                                    </tr>
+                                    </thead>
 
-                    <form>
-                        <div class="row">
-                            <div class="column">
-                                <label for="name">Congelador</label>
-                                <select id="congelador" class="">
-                                    <option value="opcion">Congelador #1</option>
-                                    <option value="opcion">Congelador #2</option>
-                                    <option value="opcion">Congelador #3</option>
-                                </select>
-                            </div>
+                                    <tbody>
 
-                            <div class="column">
-                                <label for="producto">Producto</label>
-                                <select id="producto" class="">
-                                    <option value="opcion">Product #1</option>
-                                    <option value="opcion">Product #2</option>
-                                    <option value="opcion">Product #3</option>
-                                </select>
+                                    </tbody>
+                                </table>
+
+                                <div class="ganacia">
+                                    <p>Ganancia del día:</p>
+                                    <label type="text" id="gananciaDia" class="caja">
+                                </div>
+                                <div class="ganacia">
+                                    <p>Ganancia por producto:</p>
+                                    <label type="text" id="gananciaProducto" class="caja"></label>
+
+                                </div>
+                                <div class="ganacia">
+                                    <p>Total contado:</p>
+                                    <label type="text" id="contado" class="caja"></label>
+                                </div>
+                                <div class="ganacia">
+                                    <p>Total credito:</p>
+                                    <label type="text" id="credito" class="caja"></label>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="column">
-                                <label for="cantidad">Cantidad</label>
-                                <input type="number" id="cantidad" placeholder="cantidad"></input>
-                            </div>
-                        </div>
-
-                        <button>Actualizar</button>
-                    </form>
+                    </div>
                 </div>
 
             </div>
@@ -295,7 +304,8 @@
     </div>
 </div>
 
-<!-- Bootstrap core JavaScript-->
+<script src="js/cuentas.js" type="module"></script>
+
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 

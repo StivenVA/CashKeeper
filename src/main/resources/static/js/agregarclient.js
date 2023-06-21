@@ -46,5 +46,49 @@ const agregarCliente = async()=>{
 
 }
 
+function validateInput() {
+    const input = document.getElementById("nombre");
+    const inputValue = input.value;
+    const lettersRegex = /^[A-Za-z]+$/;
+
+    if (!lettersRegex.test(inputValue)) {
+        input.value = inputValue.replace(/[^A-Za-z]+/g, '');
+    }
+}
 
 
+var input = document.getElementById("nombre");
+
+input.addEventListener("input", function(event) {
+    var inputValue = event.target.value;
+
+    var cleanValue = inputValue.replace(/[^a-zA-Z]/g, "");
+
+    event.target.value = cleanValue;
+});
+
+document.getElementById("nombre").addEventListener("input",validateInput);
+
+function validateNumber(){
+    const input = document.getElementById("idCliente");
+    const inputValue = input.value;
+    const numberRegex = /^[0-9]+$/;
+
+    if (!numberRegex.test(inputValue)) {
+        input.value = inputValue.replace(/[^0-9]+/g, '');
+    }
+}
+
+document.getElementById("idCliente").addEventListener("input",validateNumber);
+
+function validateTelefono(){
+    const input = document.getElementById("telefono");
+    const inputValue = input.value;
+    const numberRegex = /^[0-9]+$/;
+
+    if (!numberRegex.test(inputValue)) {
+        input.value = inputValue.replace(/[^0-9]+/g, '');
+    }
+}
+
+document.getElementById("telefono").addEventListener("input",validateTelefono);

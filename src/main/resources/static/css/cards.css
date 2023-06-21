@@ -71,7 +71,8 @@
     align-items: flex-start;
     justify-content: space-between;
     max-width: 20rem;
-    max-height: 30rem;
+    max-height: 100%;
+    background: white;
 }
 
 @media(max-width: 100%){

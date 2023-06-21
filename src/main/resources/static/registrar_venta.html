@@ -98,8 +98,8 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="ver_inventario.html">Ver</a>
-                        <a class="collapse-item" href="registrar_pedido.html">Registrar Pedido</a>
-                        <a class="collapse-item" href="utilities-border.html">Actualizar</a>
+                        <a class="collapse-item" href="registrar_pedido.html">Realizar Pedido</a>
+                        <a class="collapse-item" href="actualizar_inventario.html">Actualizar</a>
                     </div>
                 </div>
             </li>
@@ -124,7 +124,8 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="registrar_venta.html">Registrar Venta</a>
-                        <a class="collapse-item" href="register.html">Ver cuentas</a>
+                        <a class="collapse-item" href="ver_ventas.html">Ver Ventas</a>
+                        <a class="collapse-item" href="cuentas.html">Ver cuentas</a>
                         <div class="collapse-divider"></div>
                     </div>
                 </div>
@@ -242,6 +243,13 @@
                                     <option value="opcion">op3</option>
                                 </select>
                             </div>
+                            <div class="pago registrar" >
+                                <p>Método de pago</p>
+                                <select id="pago" class="caja">
+                                    <option value="opcion">Crédio</option>
+                                    <option value="opcion">Contado</option>
+                                </select>
+                            </div>
                             <div class="cantidad  registrar">
                                 <p>Cantidad</p>
                                 <input type="number" id="cantidad" class="caja" pattern="[0-9]+">
@@ -268,6 +276,7 @@
                                                 <tr>
                                                     <th>Cliente</th>
                                                     <th>Producto</th>
+                                                    <th>Método de pago</th>
                                                     <th>Cantidad</th>
                                                     <th>Precio</th>
                                                     <th>Subtotal</th>
@@ -285,7 +294,7 @@
 
                         <div class="total">
                             <p>Total:</p>
-                            <input type="text" id="total" class="caja">
+                            <label type="text" id="total" class="caja"></label>
                             <button type="submit">Registrar venta</button>
                         </div>
 

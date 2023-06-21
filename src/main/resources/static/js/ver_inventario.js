@@ -117,9 +117,9 @@ const traerPedidos = async()=>{
                                 </tbody>
                             </table>
 
-                            <div class="price-value" data-currency="$ USD" data-currency-simple="USD">
-                                    <p class="price-number">$<span class="price-integer">0</span></p>
-                                    <div id="priceDiscountCent">Total</div>
+                            <div id="total${i}" class="price-value" data-currency="$ USD" data-currency-simple="USD">
+                                    <div id="priceDiscountCent">Total: &nbsp;</div>
+                                    <p class="price-number">&nbsp; $<span class="price-integer"></span></p>
                                 </div>
                         </div>
                     </div>
@@ -138,11 +138,12 @@ const traerPedidos = async()=>{
         html=`<tr>
     <td>${producto.descripcion}</td>
     <td>${producto.cantidad}</td>
+    <td>${producto.precio}</td>
     </tr>`
 
     document.querySelector(`#proveedor${i} tbody`).insertAdjacentHTML("beforeend", html);
     });
-
+    document.querySelector(`#total${i} .price-integer`).insertAdjacentHTML("beforeend",pedido.total);
     i++;
     });
 
