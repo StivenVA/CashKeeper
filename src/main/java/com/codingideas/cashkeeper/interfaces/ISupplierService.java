@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ISupplierService {
 
-    List getSuppliers();
+    List getSuppliers(boolean auth);
 
     void deleteSupplier(Supplier supplier, boolean auth);
 

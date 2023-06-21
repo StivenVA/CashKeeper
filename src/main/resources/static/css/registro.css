@@ -1,44 +1,42 @@
 #form{
-    height: 400px;
-    width: 600px;
+    height: 100%;
+    width: 100%;;
     display: flex;
-    justify-content: center;
     align-items: center;
-   
     justify-content: center;
-    position: fixed;
-    top: 30%;
-    left: 28%;
     padding: 40px 0;
-
 }
 .form{
-    width: 100%;
+    width: 60%;
     margin: auto;
+    justify-content: center;
+    align-items: center;
 }
 h1{
     text-align: center;
     font-weight: 500;
-    position: fixed;
-    top: 20%;
-    left: 35%;
+    position: absolute;
 }
 
 form .grupo{
     position: relative;
     margin: 45px;
+    justify-content: center;
+    align-items: center;
+    width: 900px;
 }
 
 input{
     background:#e77d7d ;
-    color: #c6c6c6;
+    color: #000000;
     font-size: 18px;
     padding: 10px 10px 10px 5px;
-    display: block;
+    display: flex;
     width: 100%;
     border: none;
     border-radius: 20px;
     height: 32px;
+    max-width: 60%;
 }
 input:focus{
     outline: none;
@@ -59,15 +57,15 @@ input:focus~.label,
 input:valid~.label{
     top: -26px;
     font-size: 14px;
-    color: #0f6ae0;
+    color: #000000;
 }
 button{
     font-family: 'Merienda', cursive;
     background: #CA1C1C;
     border: none;
     display: block;
-    width: 40%;
-    margin: 10px auto;
+    width: 20%;
+    margin: auto;
     color: #FFFFFF;
     height: 30px;
     font-size: 16px;
@@ -80,7 +78,7 @@ img{
     width: 25px;
     height: 25px;
 }
-.añadir{
+.agregar{
     width: 45px;
     height: 45px;
 }

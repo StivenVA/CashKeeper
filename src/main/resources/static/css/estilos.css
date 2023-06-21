@@ -1,3 +1,16 @@
+body{
+    font-family: 'Bodoni Moda', serif;
+    font-family: 'Diphylleia', serif;
+    font-family: 'Imprima', sans-serif;
+    font-size: 18px;
+}
+#content{
+    font-family: 'Bodoni Moda', serif;
+    font-family: 'Diphylleia', serif;
+    font-family: 'Imprima', sans-serif;
+    font-size: 18px;
+    color: black;
+}
 .nav-item{
     font-size: 25px;
 }

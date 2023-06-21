@@ -18,9 +18,9 @@ public class SupplierController {
     private final ISupplierService iSupplierService;
 
     @RequestMapping(value = "/get")
-    public List getSuppliers(){
+    public List getSuppliers(@RequestHeader(value = "Authorization") boolean auth){
 
-        return iSupplierService.getSuppliers();
+        return iSupplierService.getSuppliers(auth);
     }
 
     @RequestMapping(value = "/add")

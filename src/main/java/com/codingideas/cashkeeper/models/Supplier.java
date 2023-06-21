@@ -9,7 +9,9 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "proveedores")
-public class Supplier {
+public class
+Supplier {
+
 
     @Id @Column(name = "id_proveedor")
     String id_proveedor;

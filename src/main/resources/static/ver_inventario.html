@@ -24,8 +24,11 @@
 
     <!-- Custom styles for this template-->
     <link href="css/inicio2.css" rel="stylesheet">
-    <link href="css/acciones.css" rel="stylesheet">
     <link href="css/estilos.css" rel="stylesheet">
+    <link href="css/tabs.css" rel="stylesheet">
+    <link href="css/cards.css" rel="stylesheet">
+    <link href="css/acciones.css" rel="stylesheet">
+
 
 </head>
 
@@ -219,36 +222,152 @@
 
                 </nav>
                 <!-- End of Topbar -->
-
+                
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <div class="tabla">
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Clientes</h6>
-                                <input placeholder="cliente"/>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>Número de documento</th>
-                                                <th>Nombre</th>
-                                                <th>Dirección</th>
-                                                <th>Teléfono</th>
-                                                <th>Acciones</th>
-                                            </tr>
-                                        </thead>
+                    <div class="tabs">
+                        <div class="lbl-tab">
+                            <label for="radio1">Inventario</label>
+                            <label for="radio2">Pedidos</label>
+                            <label for="radio3">Inventario total</label>
+                        </div>
+
+                        <div class="tab-content">
+                            <input type="radio" name="radio" id="radio1">
+                            <div class="tab1">
+                                <h2>Inventario más reciente</h2>
                                 
-                                        <tbody>
-                                        
-                                        </tbody>
-                                    </table>
+                                <div class="card shadow mb-4">
+                                    <div class="card-header py-3" >
+                                        <h6 class="m-0 font-weight-bold text-primary" >Congelador #1</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="tabla">
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered" id="congelador1" width="100%" cellspacing="0">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Id</th>
+                                                                <th>Fecha</th>
+                                                                <th>Descripción</th>
+                                                                <th>Cantidad</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                
+                                                        <tbody>
+                                                        
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </div>
+
+                                <div class="card shadow mb-4">
+                                    <div class="card-header py-3" >
+                                        <h6 class="m-0 font-weight-bold text-primary" >Congelador #2</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="tabla">
+                                            <div class="card shadow mb-4">
+
+                                                <div class="card-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered" id="congelador2" width="100%" cellspacing="0">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Id</th>
+                                                                    <th>Fecha</th>
+                                                                    <th>Descripción</th>
+                                                                    <th>Cantidad</th>
+
+                                                                </tr>
+                                                            </thead>
+                                                    
+                                                            <tbody>
+                                                            
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card shadow mb-4">
+                                    <div class="card-header py-3" >
+                                        <h6 class="m-0 font-weight-bold text-primary" >Congelador #3</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="tabla">
+                                            <div class="card shadow mb-4">
+                                                <div class="card-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered" id="congelador3" width="100%" cellspacing="0">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Id Producto</th>
+                                                                    <th>Fecha</th>
+                                                                    <th>Descripción</th>
+                                                                    <th>Cantidad</th>
+                                                                </tr>
+                                                            </thead>
+                                                    
+                                                            <tbody>
+                                                            
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <input type="radio" name="radio" id="radio2">
+                            <div class="tab2">
+                                <h2>Pedidos más recientes</h2>
+                                <div class="tarjeta-contenedor">
+                                </div> 
+                            </div>
+
+                            <input type="radio" name="radio" id="radio3">
+                            <div class="tab3">
+                                <div class="tabla">
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header py-3">
+                                            <h6 class="m-0 font-weight-bold text-primary">Total inventario</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Fecha</th>
+                                                            <th>producto</th>
+                                                            <th>cantidad</th>
+                                                        </tr>
+                                                    </thead>
+                                            
+                                                    <tbody>
+                                                    
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
                 <!-- /.container-fluid -->
 
@@ -281,52 +400,7 @@
                 <div class="modal-body">¿Estas seguro que deseas cerrar sesión?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" id="cerrarSesion" data-dismiss="modal">Cerrar sesión</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="eliminarCliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"></h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">¿Esta seguro que desea eliminar el cliente?</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" id="eliminar" data-eliminarCliente href="#" data-dismiss="modal">Aceptar</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="editarCliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Editar informacion del cliente</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h6>nombre</h6>
-                    <input type="text" id="nombre">
-                    <h6>direccion</h6>
-                    <input type="text" id="direccion">
-                    <h6>telefono</h6>
-                    <input type="text" id="telefono">
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" id="editar" data-editarCliente href="#" data-dismiss="modal">Aceptar</a>
+                    <a class="btn btn-primary" id="cerrarSesion" href="index.html">Cerrar sesión</a>
                 </div>
             </div>
         </div>
@@ -336,14 +410,12 @@
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <script src="js/ver_inventario.js" type="module"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-
-  
-    <script src="js/clientes.js" type="module"></script>
+    <script src="js/inicio.js" type="module"></script>
 
 </body>
 
