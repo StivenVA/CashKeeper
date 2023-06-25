@@ -230,37 +230,34 @@
                             <div class="cliente registrar" >
                                 <p>Cliente</p>
                                 <select id="clientes" class="caja">
-                                    <option value="opcion">cliente1</option>
-                                    <option value="opcion">cliente2</option>
-                                    <option value="opcion">cliente2</option>
+                                    <option value="" selected disabled>Seleccione un cliente</option>
                                 </select>
                             </div>
                             <div class="producto registrar" >
                                 <p>Producto</p>
                                 <select id="productos" class="caja">
-                                    <option value="opcion">op1</option>
-                                    <option value="opcion">op2</option>
-                                    <option value="opcion">op3</option>
+                                    <option value="" selected disabled>Seleccione un producto</option>
                                 </select>
                             </div>
                             <div class="pago registrar" >
                                 <p>Método de pago</p>
                                 <select id="pago" class="caja">
-                                    <option value="opcion">Crédio</option>
-                                    <option value="opcion">Contado</option>
+                                    <option value="" selected disabled>Seleccione un metodo de pago</option>
+                                    <option value="crédito">Crédito</option>
+                                    <option value="contado">Contado</option>
                                 </select>
                             </div>
                             <div class="cantidad  registrar">
                                 <p>Cantidad</p>
-                                <input type="number" id="cantidad" class="caja" pattern="[0-9]+">
+                                <input type="number" id="cantidad" class="caja" pattern="[1-9]+">
                             </div>
                             <div class="precio  registrar">
                                 <p>Precio unitario</p>
-                                <input type="number" id="precio" class="caja" pattern="[0-9]+">
+                                <input type="number" id="precio" class="caja" pattern="[1-9]+">
                             </div>
 
                             <div class="boton  registrar">
-                                <button type="button" name="button" id="button" onclick="agregar()">Agregar</button>
+                                <button type="button" name="button" id="button">Agregar</button>
                             </div>
                         </div>
                         
@@ -295,7 +292,7 @@
                         <div class="total">
                             <p>Total:</p>
                             <label type="text" id="total" class="caja"></label>
-                            <button type="submit">Registrar venta</button>
+                            <button type="submit" id="registrar">Registrar venta</button>
                         </div>
 
                         
@@ -349,7 +346,7 @@
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
     <script src="js/inicio.js" type="module"></script>
-    <script src="js/registrar_venta.js"></script>
+    <script src="js/registrar_venta.js" type="module"></script>
 
 </body>
 

@@ -25,7 +25,7 @@ public class InventoryRespository {
     }
 
     public void mergeInventory(Inventory inventory){
-        entityManager.merge(inventory);
+        entityManager.persist(inventory);
     }
 
     public Inventory findInventory(int congelador, Product product){

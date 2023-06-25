@@ -58,16 +58,6 @@ public class SalesService implements ISalesService {
         return salesDTOList;
     }
 
-    @Override
-    public boolean modifySale(Sale sale, boolean auth) {
-
-        if(!auth) return false;
-
-        saleRepository.updateSale(sale);
-        saleRepository.updateBill(sale);
-
-        return true;
-    }
 
     @Override
     public String registerSale(SalesDTO saleDTO,boolean auth){
@@ -75,14 +65,15 @@ public class SalesService implements ISalesService {
         if (!auth) return "";
         MapperSale mapperSale = new MapperSale();
         User user = userRepository.findUser(saleDTO.getId_cliente());
+        Bill bill = mapperSale.saleDTOtoBill(saleDTO,user);
+        bill.setId_factura(saleRepository.getLastIdBill());
 
-        saleRepository.mergeBill(mapperSale.saleDTOtoBill(saleDTO,user));
+        saleRepository.mergeBill(bill);
 
-        for (ProductDTO productDTO: saleDTO.getProducts()) {
+        for (ProductDTO productDTO: saleDTO.getProductos()) {
 
             Sale sale = new Sale();
             Product product = productRespository.findProduct(productDTO.getId_producto());
-            Bill bill = saleRepository.findBill(saleDTO.getId_factura());
 
             sale.setId_producto(product);
             sale.setId_factura(bill);

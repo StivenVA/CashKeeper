@@ -14,14 +14,13 @@ import java.time.LocalTime;
 @Entity
 public class Order {
     @Column(name = "fecha")
-    LocalDate fecha;
+    String fecha;
 
     @Column(name = "hora")
-    LocalTime hora;
+    String hora;
 
     @Id
     @Column(name = "id_pedido")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id_pedido;
 
     @Column(name = "total")

@@ -14,5 +14,5 @@ public class TotalInventoryDTO{
     private String id_producto;
     private String descripcion;
     private int cantidad;
-    private LocalDate fecha;
+    private String fecha;
 }

@@ -10,13 +10,13 @@ document.getElementById("cerrarSesion").addEventListener("click",()=>{
     window.location = "index.html";
 });
 
-const mostrarClientes = async ()=>{
+const mostrarProveedores = async ()=>{
 
     const auth = await requestAuthorization();
 
-    if (!auth){ await error404(); return;}
+    if (!auth){ error404(); return;}
 
-    const request = await fetch("user/get/clients",{
+    const request = await fetch("supplier/get",{
         headers:{
             "Accept":"application/json",
             "Content-type":"application/json",
@@ -24,29 +24,29 @@ const mostrarClientes = async ()=>{
         }
     });
 
-    const clientes = await request.json();
+    const proveedores = await request.json();
 
-    const select=document.getElementById("clientes");
+    const select=document.getElementById("proveedor");
 
-    clientes.forEach(cliente=>{
+    proveedores.forEach(proveedor=>{
         const opcion = document.createElement("option");
 
-        opcion.value = cliente.id;
-        opcion.text = cliente.nombre;
+        opcion.value = proveedor.id_proveedor;
+        opcion.text = proveedor.nombre;
         select.appendChild(opcion);
     })
 }
 
 document.addEventListener("DOMContentLoaded",()=>{
-    mostrarClientes();
-    mostrarProductos();
+   mostrarProveedores();
+   mostrarProductos();
 });
 
 const mostrarProductos = async ()=>{
 
     const auth = await requestAuthorization();
 
-    if(!auth) { await error404(); return; }
+    if(!auth) { error404(); return; }
 
     const request = await fetch("products/get",{
         headers:{
@@ -57,7 +57,7 @@ const mostrarProductos = async ()=>{
     });
 
     const productos = await request.json();
-    const select = document.getElementById("productos");
+    const select = document.getElementById("productosSelect");
 
     productos.forEach(producto=>{
         const opcion = document.createElement("option");
@@ -70,10 +70,9 @@ const mostrarProductos = async ()=>{
 
 const actualizarTabla = ()=>{
     const cantidad = document.getElementById("cantidad");
-    const clientes = document.getElementById("clientes");
-    const idProducto = document.getElementById("productos");
+    const proveedor = document.getElementById("proveedor");
+    const idProducto = document.getElementById("productosSelect");
     const precio = document.getElementById("precio");
-    const metodoPago = document.getElementById("pago");
 
 
     const producto ={};
@@ -83,15 +82,13 @@ const actualizarTabla = ()=>{
 
     productos.push(producto);
 
-    let html = `
-                        <tr>
-                             <th>${clientes.options[clientes.selectedIndex].text}</th>
-                            <th>${idProducto.options[idProducto.selectedIndex].text}</th>
-                            <th>${metodoPago.options[metodoPago.selectedIndex].text}</th>
-                            <th>${cantidad.value}</th>
-                            <th>${precio.value}</th>
-                            <th>${cantidad.value*precio.value}</th>
-                        </tr>`;
+    let html = `<tr>
+                            <td>${proveedor.options[proveedor.selectedIndex].text}</td>
+                            <td>${idProducto.options[idProducto.selectedIndex].text}</td>
+                            <td>${cantidad.value}</td>
+                            <td>${precio.value}</td>
+                            <td>${precio.value*cantidad.value}</td>
+                       </tr>`;
     total += precio.value*cantidad.value;
     document.querySelector("#informacion tbody").insertAdjacentHTML("beforeend",html);
 
@@ -100,8 +97,7 @@ const actualizarTabla = ()=>{
     cantidad.value ="";
     idProducto.selectedIndex = 0;
     precio.value ="";
-    metodoPago.disabled = true;
-    clientes.disabled = true;
+    proveedor.disabled = true;
 };
 
 document.getElementById("button").addEventListener("click",(e)=>{
@@ -109,14 +105,13 @@ document.getElementById("button").addEventListener("click",(e)=>{
     actualizarTabla();
 });
 
-const realizarVenta=async ()=>{
+const realizarPedido=async ()=>{
 
     const auth = await requestAuthorization();
 
-    if (!auth){ await error404(); return;}
+    if (!auth){ error404(); return;}
 
-    const cliente = document.getElementById("clientes");
-    const metodoPago = document.getElementById("pago");
+    const proveedor = document.getElementById("proveedor");
     const fecha = new Date();
     let horas = fecha.getHours();
     let minutos = fecha.getMinutes();
@@ -130,29 +125,27 @@ const realizarVenta=async ()=>{
     let horaFormato24 = `${horas}:${minutos}:${segundos}`;
 
 
-    const factura = {
-        id_cliente:cliente.value,
-        fecha:fecha.toISOString().slice(0, 8)+fecha.getDate(),
+    const pedido = {
+        idProveedor:proveedor.value,
+        fecha:fecha.toISOString().slice(0, 10),
         hora:horaFormato24,
         total,
-        productos,
-        metodo:metodoPago.value
+        productos
     }
 
-    await fetch("sales/add",{
+    const request=await fetch("order/add",{
         method:"POST",
         headers:{
             "Accept":"application/json",
             "Content-type":"application/json",
             "Authorization":auth
         },
-        body:JSON.stringify(factura)
+        body:JSON.stringify(pedido)
     })
-    alert("venta registrada");
     window.location.reload();
 }
 
-document.getElementById("registrar").addEventListener("click",realizarVenta);
+document.getElementById("registrar").addEventListener("click",realizarPedido);
 
 document.getElementById("cantidad").addEventListener("input",(e)=>{
     let value = e.target.value;

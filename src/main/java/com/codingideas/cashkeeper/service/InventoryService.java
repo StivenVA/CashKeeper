@@ -1,5 +1,6 @@
 package com.codingideas.cashkeeper.service;
 
+import com.codingideas.cashkeeper.dto.InventoryDTO;
 import com.codingideas.cashkeeper.dto.TotalInventoryDTO;
 import com.codingideas.cashkeeper.interfaces.InventoryInterface;
 import com.codingideas.cashkeeper.models.*;
@@ -12,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,16 +38,19 @@ public class InventoryService implements InventoryInterface {
     }
 
     @Override
-    public boolean updateInventory(boolean auth, List<Inventory> inventoryList) {
+    public boolean updateInventory(boolean auth, InventoryDTO inventoryDTO) {
         if (!auth) return false;
 
-        for (Inventory inventory:
-             inventoryList) {
-            Product product = productRespository.findProduct(inventory.getId_producto().getId());
-            inventory.setId_producto(product);
+        Inventory inventory = new Inventory();
+        Product product = productRespository.findProduct(inventoryDTO.getId_producto());
 
-            inventoryRespository.mergeInventory(inventory);
-        }
+        inventory.setId_producto(product);
+        inventory.setCongelador(inventoryDTO.getCongelador());
+        inventory.setFecha(inventoryDTO.getFecha());
+        inventory.setCantidad(inventoryDTO.getCantidad());
+        System.out.println(inventory);
+
+        inventoryRespository.mergeInventory(inventory);
 
         return false;
     }
@@ -73,7 +78,7 @@ public class InventoryService implements InventoryInterface {
         List<Inventory> inventory= inventoryRespository.getLastInventory();
         List<Order> LastOrder = orderRepository.getLastOrders();
 
-        if (!inventory.get(0).getFecha().isEqual(LastOrder.get(0).getFecha())) return ResponseEntity.badRequest().body(new InventoryRequest(null,"Las fecha del ultimo pedido y del inventario no coinciden"));
+        if (!inventory.get(0).getFecha().equals(LastOrder.get(0).getFecha())) return ResponseEntity.badRequest().body(new InventoryRequest(null,"Las fecha del ultimo pedido y del inventario no coinciden"));
 
         for (int i = 0; i < products.size(); i++) {
 

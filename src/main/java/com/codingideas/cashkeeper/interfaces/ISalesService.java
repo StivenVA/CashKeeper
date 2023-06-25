@@ -9,7 +9,5 @@ public interface ISalesService {
 
     List getSales(boolean auth);
 
-    boolean modifySale(Sale sale, boolean auth);
-
     String registerSale(SalesDTO sale, boolean auth);
 }

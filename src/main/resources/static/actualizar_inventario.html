@@ -230,18 +230,16 @@
                             <div class="column">
                                 <label for="name">Congelador</label>
                                 <select id="congelador" class="">
-                                    <option value="opcion">Congelador #1</option>
-                                    <option value="opcion">Congelador #2</option>
-                                    <option value="opcion">Congelador #3</option>
+                                    <option value="1">Congelador #1</option>
+                                    <option value="2">Congelador #2</option>
+                                    <option value="3">Congelador #3</option>
                                 </select>
                             </div>
 
                             <div class="column">
                                 <label for="producto">Producto</label>
                                 <select id="producto" class="">
-                                    <option value="opcion">Product #1</option>
-                                    <option value="opcion">Product #2</option>
-                                    <option value="opcion">Product #3</option>
+                                    <option value="" disabled selected>Seleccione un producto</option>
                                 </select>
                             </div>
                         </div>
@@ -249,11 +247,11 @@
                         <div class="row">
                             <div class="column">
                                 <label for="cantidad">Cantidad</label>
-                                <input type="number" id="cantidad" placeholder="cantidad"></input>
+                                <input type="number" id="cantidad" placeholder="cantidad" min="1">
                             </div>
                         </div>
 
-                        <button>Actualizar</button>
+                        <button id="actualizar">Actualizar</button>
                     </form>
                 </div>
 
@@ -296,6 +294,7 @@
 </div>
 
 <!-- Bootstrap core JavaScript-->
+<script src="js/actualizar_inventario.js" type="module"></script>
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -305,6 +304,7 @@
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin-2.min.js"></script>
 <script src="js/inicio.js" type="module"></script>
+
 
 </body>
 

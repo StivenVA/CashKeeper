@@ -22,44 +22,30 @@ public class SaleRepository {
     private final EntityManager entityManager;
 
     public List<Sale> getProducts(int id){
-        return entityManager.createQuery("from Sale where id_factura.id_factura="+id).getResultList();
+        return entityManager.createQuery("select s from (select max(fecha) as maxfecha from Bill) f,Sale s,Bill b where f.maxfecha = b.fecha and s.id_factura.id_factura="+id).getResultList();
     }
 
     public List<Long> getNumberOfProductsForBill(){
         return entityManager
-                .createQuery("select count(id_factura) from Sale group by id_factura").getResultList();
+                .createQuery("SELECT COUNT(s.id_factura) FROM Bill b JOIN Sale s ON b.id_factura = s.id_factura.id_factura WHERE b.fecha = (SELECT MAX(fecha) FROM Bill ) GROUP BY b.id_factura").getResultList();
     }
 
     public List<Bill> getBills(){
-        return entityManager.createQuery("from Bill").getResultList();
+        return entityManager.createQuery("from Bill where fecha = (select max(fecha) from Bill)").getResultList();
     }
 
-    public void updateSale(Sale saleEdited){
-
-        List<Sale> sale=entityManager.createQuery("from Sale where id_factura=:id_factura and id_producto=:id_producto")
-                .setParameter("id_factura",saleEdited.getId_factura())
-                .setParameter("id_producto",saleEdited.getId_producto()).getResultList();
-
-        sale.get(0).setCantidad(saleEdited.getCantidad());
-
-        entityManager.merge(sale.get(0));
-
-    }
-
-    public void updateBill(Sale sale){
-        Bill bill = entityManager.find(Bill.class,sale.getId_factura().getId_factura());
-
-        bill.setTotal(sale.getId_factura().getTotal());
-
-        entityManager.merge(bill);
-    }
 
     public void mergeBill(Bill bill){
         entityManager.merge(bill);
     }
 
+    public int getLastIdBill(){
+        List<Integer> lastId = entityManager.createQuery("select max(id_factura) from Bill ").getResultList();
+        return lastId.get(0)+1;
+    }
+
     public void mergeSale(Sale sale){
-        entityManager.merge(sale);
+        entityManager.persist(sale);
     }
 
     public Bill findBill(int id){

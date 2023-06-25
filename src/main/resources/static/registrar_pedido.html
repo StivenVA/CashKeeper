@@ -229,18 +229,15 @@
                         <div class="registro-header">
                             <div class="cliente registrar" >
                                 <p>Proveedor</p>
-                                <select id="clientes" class="caja">
-                                    <option value="opcion">Proveedor1</option>
-                                    <option value="opcion">Proveedor2</option>
-                                    <option value="opcion">Proveedor2</option>
+                                <select id="proveedor" class="caja">
+                                    <option value="" disabled selected>Seleccione el proveedor</option>
                                 </select>
                             </div>
                             <div class="producto registrar" >
                                 <p>Producto</p>
-                                <select id="productos" class="caja">
-                                    <option value="opcion">op1</option>
-                                    <option value="opcion">op2</option>
-                                    <option value="opcion">op3</option>
+                                <select id="productosSelect" class="caja">
+                                    <option value="" selected disabled>Seleccione un producto</option>
+
                                 </select>
                             </div>
                             <div class="cantidad  registrar">
@@ -253,7 +250,7 @@
                             </div>
 
                             <div class="boton  registrar">
-                                <button type="button" name="button" id="button" onclick="agregar()">Agregar</button>
+                                <button type="button" name="button" id="button" >Agregar</button>
                             </div>
                         </div>
                         
@@ -287,7 +284,7 @@
                         <div class="total">
                             <p>Total:</p>
                             <label type="text" id="total" class="caja"></label>
-                            <button type="submit">Registrar pedido</button>
+                            <button type="submit" id="registrar">Registrar pedido</button>
                         </div>
 
                         
@@ -341,7 +338,7 @@
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
     <script src="js/inicio.js" type="module"></script>
-    <script src="js/registrar_venta.js"></script>
+    <script src="js/registrar_pedido.js" type="module"></script>
 
 </body>
 

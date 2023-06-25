@@ -19,14 +19,14 @@ public class MapperSale {
 
         SalesDTO salesDTO = new SalesDTO();
 
-        salesDTO.setProducts(productos);
+        salesDTO.setProductos(productos);
         salesDTO.setHora(factura.getHora());
         salesDTO.setFecha(factura.getFecha());
         salesDTO.setId_factura(factura.getId_factura());
         salesDTO.setTotal(factura.getTotal());
         salesDTO.setNombreCliente(factura.getId_usuario().getNombre());
         salesDTO.setId_cliente(factura.getId_usuario().getId());
-
+        salesDTO.setMetodo(factura.getMetodo());
 
         return salesDTO;
     }
@@ -34,11 +34,12 @@ public class MapperSale {
     public Bill saleDTOtoBill(SalesDTO saleDTO,User user){
         Bill bill = new Bill();
 
-        bill.setHora(LocalTime.now());
-        bill.setFecha(LocalDate.now());
+        bill.setHora(saleDTO.getHora());
+        bill.setFecha(saleDTO.getFecha());
         bill.setId_usuario(user);
         bill.setTotal(saleDTO.getTotal());
         bill.setId_factura(saleDTO.getId_factura());
+        bill.setMetodo(saleDTO.getMetodo());
 
         return bill;
     }

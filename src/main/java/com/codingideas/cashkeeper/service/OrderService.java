@@ -59,6 +59,8 @@ public class OrderService implements IOrderService {
 
         if (!auth) return false;
 
+        orderDTO.setIdPedido(orderRepository.getNextOrder()+1);
+
         MapperOrderDTO mapperOrderDTO = new MapperOrderDTO();
 
         Supplier supplier = supplierRepository.findSupplier(orderDTO.getIdProveedor());
@@ -69,7 +71,7 @@ public class OrderService implements IOrderService {
              orderDTO.getProductos()) {
 
            Product product =  productRespository.findProduct(productDTO.getId_producto());
-           Order order = orderRepository.findOrder(orderDTO.getIdPedido());
+           Order order = orderRepository.findOrder(orderRepository.getNextOrder());
 
            OrderDetail orderDetail = new OrderDetail();
 

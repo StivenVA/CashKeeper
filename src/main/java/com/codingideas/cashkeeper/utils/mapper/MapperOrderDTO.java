@@ -29,8 +29,8 @@ public class MapperOrderDTO {
 
         Order order = new Order();
 
-        order.setFecha(LocalDate.now());
-        order.setHora(LocalTime.now());
+        order.setFecha(orderDTO.getFecha());
+        order.setHora(orderDTO.getHora());
         order.setTotal(orderDTO.getTotal());
         order.setId_proveedor(proveedor);
         order.setId_pedido(orderDTO.getIdPedido());

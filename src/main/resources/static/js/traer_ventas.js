@@ -68,7 +68,7 @@ const traerVentas = async()=>{
     let html="";
 
     
-    venta.products.forEach(producto=>{
+    venta.productos.forEach(producto=>{
         html=`<tr>
         <td>${producto.descripcion}</td>
         <td>${producto.cantidad}</td>

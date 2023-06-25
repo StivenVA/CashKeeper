@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class InventoryDTO {
 
-    private LocalDate fecha;
+    private String fecha;
     private String id_producto;
     private String descripcion;
     private int congelador;

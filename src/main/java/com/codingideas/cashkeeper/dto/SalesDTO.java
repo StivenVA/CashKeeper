@@ -16,9 +16,10 @@ import java.util.List;
 public class SalesDTO {
     private Long total;
     private int id_factura;
-    private List<ProductDTO> products;
+    private List<ProductDTO> productos;
     private LocalDate fecha;
     private LocalTime hora;
     private String nombreCliente;
     private String id_cliente;
+    private String metodo;
 }

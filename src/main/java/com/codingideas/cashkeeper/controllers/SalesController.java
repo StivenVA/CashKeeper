@@ -21,10 +21,6 @@ public class SalesController {
         return iSalesService.getSales(auth);
     }
 
-    @RequestMapping(value="edit",method = RequestMethod.POST)
-    public boolean editSale(@RequestBody Sale sale, @RequestHeader(value = "Authorization") boolean auth){
-        return iSalesService.modifySale(sale,auth);
-    }
 
     @RequestMapping(value = "/add")
     public String registerSale(@RequestBody SalesDTO salesDTO, @RequestHeader(value = "Authorization") boolean auth){
