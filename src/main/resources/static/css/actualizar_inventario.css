@@ -40,3 +40,16 @@ select:focus,input:focus{
     outline: none;
     border-color: #6f6df4;
 }
+
+.boton{
+    background-color: #ecb3b3;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    border: solid 1px #e77d7d;
+}
+.boton:hover{
+    background-color: #aed9e8;
+    border: none;
+    border: solid 1px #3fa0c7;
+}

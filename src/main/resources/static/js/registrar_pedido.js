@@ -92,7 +92,7 @@ const actualizarTabla = ()=>{
     total += precio.value*cantidad.value;
     document.querySelector("#informacion tbody").insertAdjacentHTML("beforeend",html);
 
-    document.getElementById("total").innerText = total;
+    document.getElementById("total").innerText = "$" + total;
 
     cantidad.value ="";
     idProducto.selectedIndex = 0;

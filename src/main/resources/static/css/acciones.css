@@ -38,3 +38,17 @@ tr:nth-child(even){
 tr:hover td{
     background-color: #f0a5a5;
 }
+.nuevo{
+    background-color: #ecb3b3;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    border: solid 1px #e77d7d;
+    color: black;
+    padding-inline: 0.2em;
+}
+.nuevo:hover{
+    background-color: #7dc9e7;
+    border: none;
+    border: solid 1px #3fa0c7;
+}

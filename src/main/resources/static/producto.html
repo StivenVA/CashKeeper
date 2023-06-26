@@ -18,6 +18,11 @@
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital@1&family=Diphylleia&family=Imprima&family=Open+Sans:ital,wght@0,300;1,400&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+
+
     <!-- Custom styles for this template-->
     <link href="css/inicio2.css" rel="stylesheet">
     <link href="css/acciones.css" rel="stylesheet">
@@ -95,7 +100,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="ver_inventario.html">Ver</a>
                         <a class="collapse-item" href="registrar_pedido.html">Realizar Pedido</a>
-                        <a class="collapse-item" href=actualizar_inventario.html">Actualizar</a>
+                        <a class="collapse-item" href="actualizar_inventario.html">Actualizar</a>
                     </div>
                 </div>
             </li>
@@ -230,7 +235,6 @@
                                         <tr>
                                             <th>Id</th>
                                             <th>Descripción</th>
-                                            <th>Precio</th>
                                             <th>Acciones 
                                                 
                                             </th>
@@ -244,7 +248,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" id="agregar" data-toggle="modal" data-target="#add"><img src="img/plus-pequeno.svg" alt="" class="acciones">Añadir nuevo producto</a>
+                    <a href="#" id="agregar" data-toggle="modal" data-target="#add" class="nuevo">Añadir nuevo producto</a>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -304,10 +308,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <h6>Precio del producto</h6>
-                    <input type="number" min="0" id="precio">
-                </div>
+
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                     <a class="btn btn-primary" id="actualizar" data-producto href="#" data-dismiss="modal">Actualizar</a>
@@ -352,8 +353,6 @@
                     <p>Descripcion del nuevo producto</p>
                     <input type="text" placeholder="Descripcion" id="descripcioNuevoProducto">
                     <br>
-                    <p>Precio del nuevo producto</p>
-                    <input type="number" min="0" placeholder="precio" id="precioNuevoProducto">
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>

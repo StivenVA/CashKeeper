@@ -31,9 +31,7 @@ let traerProductos = async ()=>{
             html += ` <tr>
             <td>${producto.id}</td>
             <td>${producto.descripcion}</td>
-            <td>${producto.precio}</td>
-            <td><a href="#" onclick='pasarPrecioProducto(${JSON.stringify(producto)})' data-toggle="modal" data-target="#editarProducto"><img src="img/icons8-editar.svg" class="acciones" alt="Editar"></a>
-            <a href="#" onclick="eliminarProducto(${producto.id})" data-toggle="modal" data-target="#eliminarProducto"><img src="img/icons8-basura-llena.svg" class="acciones" alt="Eliminar"></a></td>
+            <td><a href="#" onclick="eliminarProducto(${producto.id})" data-toggle="modal" data-target="#eliminarProducto"><img src="img/icons8-basura-llena.svg" class="acciones" alt="Eliminar"></a></td>
             </tr>`;
         }
     });

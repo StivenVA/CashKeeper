@@ -6,31 +6,34 @@
     font-size: 18px;
 }
 .registro-header{
-    padding: 1em;
     overflow: hidden;
 }
 
 .registrar{
-    margin: 1em;
     padding: 1em;
     color: black;
     float: left;
-    width: 200px;
+    width: 207px;
+    height: 100px;
 }
 .caja{
     border-radius: 10px;
-    width: 100%;
-    background: #e77d7d;
     border: none;
+    text-align: center;
+    font-size: 16px;
+    padding: 5px;
 }
-
-.caja{
-    border-radius: 5px;
-    width: 100%;
+select{
     background: #e77d7d;
-    border: none;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    text-overflow: ellipsis;
 }
-
+input{
+    background: #e77d7d;
+    width: 125px;
+}
 .registrar button{
     border-radius: 10px;
     width: 100px;
@@ -49,17 +52,20 @@
 .total{
     width: 100%;
     padding: 1em;
+    display: flex;
+    align-items: center;
     
 }
-.total input{
+.total label{
     width: 200px;
+    margin-right: 45%;
+    background: #e77d7d;
 }
 .total button{
     background-color: #ecb3b3;
     border-radius: 10px;
     cursor: pointer;
     border: none;
-    margin-left: 35em;
     border: solid 1px #e77d7d;
 }
 .total button:hover{
